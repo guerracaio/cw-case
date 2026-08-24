@@ -58,14 +58,17 @@ Outros comandos, todos a partir de `web/`:
 
 ### Variável de ambiente
 
-Opcional. Define a origem usada em canonical, Open Graph e sitemap:
+Opcional. A origem usada em canonical, Open Graph, sitemap e JSON-LD é resolvida em cascata ([lib/seo/site.ts](web/lib/seo/site.ts)):
+
+1. `NEXT_PUBLIC_SITE_URL`, se definida — vence sempre, para domínio próprio ou hospedagem fora da Vercel;
+2. `VERCEL_PROJECT_PRODUCTION_URL`, preenchida automaticamente pela Vercel — **na Vercel não é preciso configurar nada**;
+3. `http://localhost:3000`, em desenvolvimento.
 
 ```bash
-cp .env.example .env.local
-# NEXT_PUBLIC_SITE_URL=https://www.infinitepay.io
+cp .env.example .env.local   # só se precisar sobrescrever
 ```
 
-Sem ela, o padrão é `https://www.infinitepay.io`.
+O domínio de publicação é distinto do site da InfinitePay: o CTA e a entidade `Organization` do JSON-LD usam `INFINITEPAY_URL`, uma constante fixa, e não seguem o domínio do deploy.
 
 ### A fonte da marca
 

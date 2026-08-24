@@ -1,5 +1,5 @@
 import type { FaqItem, HowToStep } from "@/content/calculadora-de-precos";
-import { SITE_NAME, SITE_URL, absoluteUrl } from "./site";
+import { INFINITEPAY_URL, SITE_NAME, absoluteUrl } from "./site";
 
 /**
  * Builders de Structured Data.
@@ -9,10 +9,15 @@ import { SITE_NAME, SITE_URL, absoluteUrl } from "./site";
  * legitima de marcacao inventada para forcar rich result.
  */
 
+/**
+ * A InfinitePay como entidade. A `url` e a do site dela, nao a do dominio
+ * onde esta aplicacao esta publicada: sao coisas diferentes, e declarar o
+ * dominio do deploy aqui afirmaria que a organizacao vive nele.
+ */
 const organization = {
   "@type": "Organization",
   name: SITE_NAME,
-  url: SITE_URL,
+  url: INFINITEPAY_URL,
 };
 
 export function webApplicationSchema({

@@ -26,7 +26,7 @@ import {
   webApplicationSchema,
 } from "@/lib/seo/jsonld";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { ROUTES, SITE_URL } from "@/lib/seo/site";
+import { INFINITEPAY_URL, ROUTES } from "@/lib/seo/site";
 
 export const metadata: Metadata = buildMetadata({
   title: PAGE.title,
@@ -175,7 +175,7 @@ export default function CalculadoraDePrecosPage() {
           </p>
           <p className="mt-8">
             <CtaLink
-              href={`${SITE_URL}/`}
+              href={`${INFINITEPAY_URL}/`}
               location="calculadora-rodape"
               className={buttonClass("primary")}
             >
