@@ -53,15 +53,24 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </Link>
 
             {/*
-              A página usa a identidade da InfinitePay sem ser oficial. O badge
-              deixa isso explícito logo no topo, ao lado do logo, onde ninguém
-              precisa rolar para ver.
+              A página usa a identidade da InfinitePay sem ser oficial, então o
+              aviso fica ao lado do logo, onde ninguém precisa rolar para ver.
+
+              "Não oficial" vem antes de "protótipo" de propósito: é a
+              informação que evita o mal-entendido. "Protótipo" sozinho, ao lado
+              da marca, pode ser lido como um protótipo DA InfinitePay.
+
+              O texto encurta no celular para caber ao lado do logo, mas a parte
+              crítica nunca some.
             */}
             <p
-              title="Página protótipo criada para um case técnico. Não é uma página oficial da InfinitePay."
+              title="Página protótipo criada para um case técnico. Não tem relação oficial com a InfinitePay."
               className="rounded-full bg-purple-0 px-3 py-1 text-[11px] font-medium whitespace-nowrap text-neutral-900 sm:text-xs"
             >
-              Protótipo · case técnico
+              <span className="sm:hidden">Não oficial · protótipo</span>
+              <span className="hidden sm:inline">
+                Página não oficial · protótipo de case técnico
+              </span>
             </p>
           </div>
         </header>
