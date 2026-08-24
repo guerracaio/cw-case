@@ -69,17 +69,13 @@ Sem ela, o padrão é `https://www.infinitepay.io`.
 
 ### A fonte da marca
 
-**Cera Pro é comercial e não está versionada aqui** (ver [.gitignore](.gitignore)) — mantê-la em um repositório público seria redistribuição.
+A identidade usa **Cera Pro**. Os arquivos servidos pela aplicação estão em `web/public/fonts/` (`.woff2`) e os originais em `assets/fonts/` (`.otf`/`.ttf`).
 
-A aplicação **constrói e funciona normalmente sem ela**, caindo no fallback do sistema. Para ver a marca fiel, coloque os três arquivos em `web/public/fonts/`:
+> Cera Pro é uma fonte comercial da TypeMates. Os arquivos estão versionados aqui por decisão do responsável pelo repositório; o uso continua sujeito à licença adquirida.
 
-```text
-web/public/fonts/CeraPro-Regular.woff2
-web/public/fonts/CeraPro-Medium.woff2
-web/public/fonts/CeraPro-Bold.woff2
-```
+A aplicação **constrói e funciona mesmo sem eles**, caindo no fallback do sistema — o carregamento é por `@font-face`, que degrada em vez de quebrar o build.
 
-Se você tiver os originais em `.otf`/`.ttf`, a conversão é:
+Para converter um original em `.otf`/`.ttf`:
 
 ```bash
 pip install fonttools brotli

@@ -3,11 +3,10 @@
 /*
   Cera Pro, a fonte da marca.
 
-  Declarada com @font-face manual, e nao com next/font/local, por um motivo
-  concreto: os arquivos sao licenciados e ficam fora do repositorio (ver
-  .gitignore). next/font/local resolve os arquivos em tempo de build e faz o
-  build FALHAR quando eles nao existem; assim, a pagina simplesmente cai no
-  fallback do sistema e continua construindo.
+  Declarada com @font-face manual, e nao com next/font/local, por
+  resiliencia: next/font/local resolve os arquivos em tempo de build e faz o
+  build FALHAR se eles faltarem. Assim, um ambiente sem as fontes apenas cai
+  no fallback do sistema e continua construindo.
 
   O preload e feito manualmente no layout.
 */
