@@ -161,21 +161,23 @@ export default function CalculadoraDePrecosPage() {
 
         <section
           aria-labelledby="cta"
-          className="mt-14 rounded-2xl bg-neutral-200 p-6 sm:p-8"
+          className="mt-16 rounded-2xl bg-neutral-900 p-8 text-white sm:p-12"
         >
-          <h2 id="cta" className="text-2xl font-bold">
-            Um preço bem calculado só vira lucro se a taxa não comer a margem
+          <h2 id="cta" className="max-w-2xl text-2xl font-bold sm:text-3xl">
+            Um preço bem calculado só vira{" "}
+            <span className="text-purple-200">lucro</span> se a taxa não comer a
+            margem
           </h2>
-          <p className="mt-3 max-w-3xl text-neutral-800">
+          <p className="mt-4 max-w-2xl text-neutral-400">
             A taxa de pagamento entra na conta como percentual sobre a venda:
             cada ponto a menos vai direto para o seu lucro, sem precisar
             aumentar o preço.
           </p>
-          <p className="mt-6">
+          <p className="mt-8">
             <CtaLink
               href={`${SITE_URL}/`}
               location="calculadora-rodape"
-              className={buttonClass("secondary")}
+              className={buttonClass("primary")}
             >
               Conhecer a InfinitePay
             </CtaLink>
