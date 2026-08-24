@@ -1,20 +1,17 @@
 # Calculadora de preços de produtos e serviços
 
+Entrega de case técnico para a vaga de **Technical SEO & AI Growth Builder** na **CloudWalk, Inc.**
+
 Página-ferramenta construída como **mockup de alta fidelidade**: uma calculadora de preço de venda para produtos e serviços, desenhada para ser altamente rastreável e otimizada para SEO e AEO, com captura de lead.
 
-O repositório reúne duas camadas: a **pesquisa** que justifica a escolha da ferramenta e a **aplicação** em si.
+O repositório reúne duas camadas: a **análise** que justifica a escolha da ferramenta e a **aplicação** em si.
 
----
+## Entregáveis
 
-## Por que esta ferramenta
-
-A análise de demanda em [outputs/seo-demand-maps/](outputs/seo-demand-maps/) identificou, no cluster de precificação:
-
-- **41.040 buscas/mês** no recorte analisado;
-- **97,9% de gap SEO** — 40.160 buscas sem ranking da InfinitePay;
-- **nenhuma calculadora** entre os 6 concorrentes observados: a SERP é quase toda editorial.
-
-A oportunidade é publicar uma página que seja ferramenta **e** documento indexável ao mesmo tempo. O diagnóstico completo está em [05_relatorio_gap_calculadora_precos.md](outputs/seo-demand-maps/05_relatorio_gap_calculadora_precos.md).
+| | |
+|---|---|
+| **Aplicação publicada** | [cw-case.vercel.app/ferramentas/calculadora-de-precos](https://cw-case.vercel.app/ferramentas/calculadora-de-precos/) |
+| **Vídeo de apresentação** | _link a incluir_ — apresentação do resultado para a liderança de growth |
 
 ---
 
@@ -34,61 +31,6 @@ cw-case/
 
 ---
 
-## Rodando local
-
-Requer **Node.js 20.9+** (testado no 22.13) e npm.
-
-```bash
-cd web
-npm install
-npm run dev
-```
-
-Abra **http://localhost:3000/ferramentas/calculadora-de-precos/**
-
-Outros comandos, todos a partir de `web/`:
-
-| Comando | O que faz |
-|---|---|
-| `npm run dev` | desenvolvimento, com hot reload |
-| `npm run build` | build de produção; deve passar sem erro de tipo |
-| `npm start` | serve o build — use este para inspecionar o HTML real |
-| `npx eslint .` | linter |
-| `npx tsc --noEmit` | checagem de tipos |
-
-### Variável de ambiente
-
-Opcional. A origem usada em canonical, Open Graph, sitemap e JSON-LD é resolvida em cascata ([lib/seo/site.ts](web/lib/seo/site.ts)):
-
-1. `NEXT_PUBLIC_SITE_URL`, se definida — vence sempre, para domínio próprio ou hospedagem fora da Vercel;
-2. `VERCEL_PROJECT_PRODUCTION_URL`, preenchida automaticamente pela Vercel — **na Vercel não é preciso configurar nada**;
-3. `http://localhost:3000`, em desenvolvimento.
-
-```bash
-cp .env.example .env.local   # só se precisar sobrescrever
-```
-
-O domínio de publicação é distinto do site da InfinitePay: o CTA e a entidade `Organization` do JSON-LD usam `INFINITEPAY_URL`, uma constante fixa, e não seguem o domínio do deploy.
-
-### A fonte da marca
-
-A identidade usa **Cera Pro**. Os arquivos servidos pela aplicação estão em `web/public/fonts/` (`.woff2`) e os originais em `assets/fonts/` (`.otf`/`.ttf`).
-
-> Cera Pro é uma fonte comercial da TypeMates. Os arquivos estão versionados aqui por decisão do responsável pelo repositório; o uso continua sujeito à licença adquirida.
-
-A aplicação **constrói e funciona mesmo sem eles**, caindo no fallback do sistema — o carregamento é por `@font-face`, que degrada em vez de quebrar o build.
-
-Para converter um original em `.otf`/`.ttf`:
-
-```bash
-pip install fonttools brotli
-python -c "from fontTools.ttLib import TTFont; f=TTFont('Cera Pro Medium.otf'); f.flavor='woff2'; f.save('CeraPro-Medium.woff2')"
-```
-
-> Confira a cobertura de glifos antes de converter um arquivo novo: nem todo arquivo de fonte traz o conjunto completo, e um sem acentuação renderiza metade do texto em português com a fonte de fallback.
-
----
-
 ## Como a página é construída
 
 A regra é **static-first → server-first → client só quando necessário**. As diretrizes completas estão em [assets/diretrizes-rendering-seo-aeo.md](assets/diretrizes-rendering-seo-aeo.md); o resumo operacional, no [CLAUDE.md](CLAUDE.md).
@@ -99,18 +41,6 @@ A regra é **static-first → server-first → client só quando necessário**. 
 - **As fórmulas vivem em funções puras** ([web/lib/pricing/](web/lib/pricing/)) que o Server Component do exemplo prático importa em build time — o exemplo publicado nunca diverge do que a ferramenta calcula.
 - **Structured Data** (`WebApplication`, `BreadcrumbList`, `HowTo`, `FAQPage`) é gerado a partir do mesmo dado que a página renderiza, então o schema só descreve conteúdo visível.
 
-### Verificando
-
-O teste que decide se a página está pronta é ler o HTML bruto:
-
-```bash
-npm run build && npm start
-curl -s http://localhost:3000/ferramentas/calculadora-de-precos/
-```
-
-No HTML devem estar presentes: `<h1>`, todos os headings, a fórmula em texto, a tabela do exemplo, os passos, todas as perguntas **e respostas**, o canonical e os blocos `application/ld+json`.
-
----
 
 ## O que é mockup
 
@@ -121,9 +51,3 @@ Esta entrega cobre a página da ferramenta. Não são reais:
 - **Páginas satélite** — as páginas editoriais de blog previstas no roadmap não fazem parte desta entrega.
 
 ---
-
-## Deploy
-
-Apenas `web/` vai para produção — é o root do projeto Next.js. Em plataformas como a Vercel, aponte o *root directory* para `web`.
-
-Lembre-se de que **as fontes não estão no repositório**: sem elas, o build funciona mas a página renderiza com a fonte de fallback.
