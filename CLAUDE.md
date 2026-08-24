@@ -281,7 +281,8 @@ Aplicação sugerida: CTA primário `purple-600` com texto branco; destaque de r
 A marca usa **Cera Pro**. Os arquivos licenciados estão em `assets/fonts/` (`.otf`) e são convertidos para `.woff2` em `web/app/fonts/`, carregados com `next/font/local` — self-hosted, sem request externo, com preload controlado.
 
 - **Declare apenas os pesos que a página realmente usa.** Cada peso vira um `<link rel="preload">` no `<head>` e entra no caminho do LCP. Hoje são dois: Medium (500) e Bold (700).
-- **O peso Regular (400) ainda não foi disponibilizado.** O guia permite texto corrido em Regular, Medium ou Bold, então o corpo usa Medium (500), definido em `body` no `globals.css`. Quando o Regular chegar: converter para `.woff2`, adicionar a entrada em `layout.tsx` e trocar o `font-weight` do body para 400.
+- **Pesos em uso:** Regular (400) no corpo, Medium (500) em labels e botões, Bold (700) em títulos. Só Regular e Bold entram em preload — são os pesos do conteúdo acima da dobra.
+- **Cuidado ao converter:** `assets/fonts/Cera Pro Regular.ttf` é um arquivo truncado, com 72 glifos e nenhum acento. O Regular válido é `cera-pro-regular.otf` (777 glifos). Confira a cobertura de glifos antes de usar qualquer arquivo novo.
 - Itálico não entra: o guia não prevê.
 - A família fica atrás da variável CSS `--font-sans`, então trocar a fonte é uma mudança de um arquivo.
 

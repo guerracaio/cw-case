@@ -71,9 +71,10 @@ Sem ela, o padrão é `https://www.infinitepay.io`.
 
 **Cera Pro é comercial e não está versionada aqui** (ver [.gitignore](.gitignore)) — mantê-la em um repositório público seria redistribuição.
 
-A aplicação **constrói e funciona normalmente sem ela**, caindo no fallback do sistema. Para ver a marca fiel, coloque os dois arquivos em `web/public/fonts/`:
+A aplicação **constrói e funciona normalmente sem ela**, caindo no fallback do sistema. Para ver a marca fiel, coloque os três arquivos em `web/public/fonts/`:
 
 ```text
+web/public/fonts/CeraPro-Regular.woff2
 web/public/fonts/CeraPro-Medium.woff2
 web/public/fonts/CeraPro-Bold.woff2
 ```
@@ -85,7 +86,7 @@ pip install fonttools brotli
 python -c "from fontTools.ttLib import TTFont; f=TTFont('Cera Pro Medium.otf'); f.flavor='woff2'; f.save('CeraPro-Medium.woff2')"
 ```
 
-> Apenas os pesos realmente usados devem ser adicionados: cada peso vira um preload no `<head>` e entra no caminho do LCP.
+> Confira a cobertura de glifos antes de converter um arquivo novo: nem todo arquivo de fonte traz o conjunto completo, e um sem acentuação renderiza metade do texto em português com a fonte de fallback.
 
 ---
 

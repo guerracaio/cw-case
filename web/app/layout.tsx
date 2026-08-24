@@ -16,12 +16,20 @@ export const metadata: Metadata = {
     "Ferramentas gratuitas da InfinitePay para quem vende produtos ou serviços.",
 };
 
-const FONTS = ["/fonts/CeraPro-Medium.woff2", "/fonts/CeraPro-Bold.woff2"];
+/*
+  Apenas os pesos do conteudo acima da dobra entram em preload: Regular
+  (corpo) e Bold (H1, forte candidato a LCP). Medium e usado em labels e
+  botoes e carrega pelo proprio @font-face, sem competir com o LCP.
+*/
+const PRELOADED_FONTS = [
+  "/fonts/CeraPro-Regular.woff2",
+  "/fonts/CeraPro-Bold.woff2",
+];
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
-  // Preload dos dois pesos usados. Fontes exigem crossOrigin mesmo vindo do
-  // mesmo dominio: sem ele o preload e descartado e o arquivo baixa duas vezes.
-  for (const href of FONTS) {
+  // Fontes exigem crossOrigin mesmo vindo do mesmo dominio: sem ele o preload
+  // e descartado e o arquivo acaba baixado duas vezes.
+  for (const href of PRELOADED_FONTS) {
     ReactDOM.preload(href, {
       as: "font",
       type: "font/woff2",
