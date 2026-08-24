@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+/*
+  Cera Pro, a fonte da marca.
+
+  Declarada com @font-face manual, e nao com next/font/local, por um motivo
+  concreto: os arquivos sao licenciados e ficam fora do repositorio (ver
+  .gitignore). next/font/local resolve os arquivos em tempo de build e faz o
+  build FALHAR quando eles nao existem; assim, a pagina simplesmente cai no
+  fallback do sistema e continua construindo.
+
+  O preload dos dois pesos e feito manualmente no layout.
+*/
+@font-face {
+  font-family: "Cera Pro";
+  src: url("/fonts/CeraPro-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cera Pro";
+  src: url("/fonts/CeraPro-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*
+  Design system InfinitePay — tokens do "Guia rapido de marca".
+
+  A paleta default do Tailwind e zerada com `--color-*: initial` de proposito:
+  cores fora da marca deixam de existir como utilitario, entao o design system
+  passa a ser garantido pelo build e nao pela disciplina de quem escreve.
+
+  Laranja (yellow-*) nao entra no tema: o guia restringe a familia a produtos
+  especificos e exige aprovacao previa do time de Brand.
+*/
+@theme {
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-white: #ffffff;
+
+  --color-purple-600: #6e08f2;
+  --color-purple-200: #a880ff;
+  --color-purple-0: #dcccff;
+
+  --color-green-500: #baff1a;
+  --color-green-300: #d9ff80;
+  --color-green-100: #f6ffe0;
+
+  --color-neutral-900: #121212;
+  --color-neutral-800: #323232;
+  --color-neutral-400: #c7c7c7;
+  --color-neutral-200: #eeeeee;
+
+  --font-sans: "Cera Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-white);
+    color: var(--color-neutral-900);
+    font-family: var(--font-sans);
+    /* Cera Pro Regular (400) ainda nao foi disponibilizada. O guia permite
+       texto corrido em Medium, entao o corpo usa 500 ate o arquivo chegar. */
+    font-weight: 500;
+  }
+
+  /* Roxo da marca como cor de foco: contraste AAA sobre branco. */
+  :focus-visible {
+    outline: 2px solid var(--color-purple-600);
+    outline-offset: 2px;
+  }
+}

@@ -1,0 +1,28 @@
+# ---------------------------------------------------------------------------
+# Fontes licenciadas
+#
+# Cera Pro e uma fonte comercial (TypeMates). Como este repositorio e publico,
+# os arquivos ficam de fora: mante-los aqui seria redistribuicao.
+#
+# Sem eles a aplicacao continua construindo e funcionando, apenas com a fonte
+# de fallback do sistema. Para ver a marca fiel, veja o README.
+# ---------------------------------------------------------------------------
+assets/fonts/
+web/public/fonts/
+
+# Python (camada de pesquisa)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+
+# arquivos de lock do LibreOffice
+.~lock.*#
