@@ -83,8 +83,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               Os cálculos são estimativas baseadas nos valores que você informa
               e não substituem orientação contábil.
             </p>
-            <p className="mt-2">
-              {new Date().getFullYear()} {SITE_NAME}
+            {/*
+              Aqui havia uma linha de copyright ("2026 InfinitePay"), que lia
+              como se a página fosse da empresa. Atribuição de marca é o
+              oposto de reivindicação de autoria: diz de quem é a marca e
+              deixa claro que esta página não é dela.
+            */}
+            <p className="mt-3">
+              Página protótipo criada para um case técnico, sem relação oficial
+              com a {SITE_NAME}. Marca, logo e identidade visual são propriedade
+              da {SITE_NAME} e aparecem aqui apenas para fins de demonstração.
             </p>
           </div>
         </footer>
