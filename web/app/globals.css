@@ -80,6 +80,19 @@
     font-weight: 400;
   }
 
+  /*
+    O <summary> do FAQ vira flex no proprio componente. Aqui fica so a
+    remocao do marcador nativo: `list-style: none` nao apaga o triangulo do
+    WebKit, que precisa do pseudo-elemento proprio.
+  */
+  summary {
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
   /* Roxo da marca como cor de foco: contraste AAA sobre branco. */
   :focus-visible {
     outline: 2px solid var(--color-purple-600);
