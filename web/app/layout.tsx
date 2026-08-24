@@ -41,7 +41,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="pt-BR" className="h-full">
       <body className="flex min-h-full flex-col antialiased">
         <header className="border-b border-neutral-200">
-          <div className="mx-auto flex max-w-5xl items-center px-4 py-4">
+          <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-4">
             <Link href={ROUTES.home} aria-label="InfinitePay, página inicial">
               <Image
                 src="/brand/logo-horizontal-black.png"
@@ -51,6 +51,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 priority
               />
             </Link>
+
+            {/*
+              A página usa a identidade da InfinitePay sem ser oficial. O badge
+              deixa isso explícito logo no topo, ao lado do logo, onde ninguém
+              precisa rolar para ver.
+            */}
+            <p
+              title="Página protótipo criada para um case técnico. Não é uma página oficial da InfinitePay."
+              className="rounded-full bg-purple-0 px-3 py-1 text-[11px] font-medium whitespace-nowrap text-neutral-900 sm:text-xs"
+            >
+              Protótipo · case técnico
+            </p>
           </div>
         </header>
 
