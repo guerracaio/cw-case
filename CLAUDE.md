@@ -286,9 +286,9 @@ Derivada de material publicado da própria InfinitePay (blocos de taxas do site)
 | Destaque de valor em texto | `text-purple-600` (o papel do "GRÁTIS" nos cards de taxa) |
 | Links, breadcrumb, numeração | `text-purple-600` |
 | Divisórias internas | `border-neutral-200` / `border-neutral-400` |
-| Superfície de resultado | `bg-green-100` — o verde forte fica reservado à ação primária |
+| Superfície de resultado | `bg-green-500` + texto `neutral-900` — o painel da calculadora |
 
-**Roxo não é cor de botão.** Ele destaca texto, link e ícone. **Verde forte é a ação**, e por isso só pode existir um `green-500` disputando atenção por seção: dois botões primários juntos anulam a hierarquia — o segundo vira `secondary`.
+**Roxo não é cor de botão.** Ele destaca texto, link e ícone. **Verde forte carrega a ação primária e o resultado da ferramenta** — os dois usos que merecem o maior peso visual da página. A regra é de distância, não de exclusividade: nunca dois `green-500` disputando atenção na mesma dobra. Dois botões primários juntos anulam a hierarquia; o segundo vira `secondary`.
 
 Uma tela dominada por roxo ou verde está fora da marca: o fundo é branco, o texto é preto, e os acentos são pontuais.
 
