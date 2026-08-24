@@ -300,7 +300,7 @@ export function PriceCalculator() {
           )}
         </div>
 
-        <ResultPanel result={resultState} />
+        <ResultPanel result={resultState} mode={mode} />
       </div>
     </div>
   );

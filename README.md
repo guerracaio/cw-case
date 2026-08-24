@@ -117,7 +117,7 @@ No HTML devem estar presentes: `<h1>`, todos os headings, a fórmula em texto, a
 
 Esta entrega cobre a página da ferramenta. Não são reais:
 
-- **Captura de lead** — o formulário funciona na tela, mas [`submitLead`](web/components/lead/submit-lead.ts) não persiste nada. Não há Route Handler, banco nem CRM. O ponto de integração está marcado no arquivo.
+- **Captura de lead** — o formulário (nome, e-mail e WhatsApp) funciona na tela e libera o detalhamento do preço, mas [`submitLead`](web/components/lead/submit-lead.ts) não persiste nada. Não há Route Handler, banco nem CRM. O ponto de integração está marcado no arquivo.
 - **Analytics** — [`track()`](web/lib/analytics/track.ts) empurra os eventos do roadmap (`tool_click`, `tool_start`, `tool_complete`, `lead_cta_click`, `lead_generated`) para o `dataLayer`, mas nenhum container GA4/GTM é carregado. Sem container, é um array em memória: dá para inspecionar em `window.dataLayer` no console.
 - **Páginas satélite** — as páginas editoriais de blog previstas no roadmap não fazem parte desta entrega.
 

@@ -1,6 +1,8 @@
 export type Lead = {
   name: string;
   email: string;
+  /** WhatsApp em E.164 (+5511999999999). */
+  phone: string;
   /** De onde o lead veio, por exemplo "calculadora-de-precos". */
   source: string;
   /** Contexto util para qualificar o lead: modo usado, faixa de preco etc. */

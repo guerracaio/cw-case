@@ -9,7 +9,6 @@ import {
   ServiceExample,
 } from "@/components/content/worked-example";
 import { CtaLink } from "@/components/lead/cta-link";
-import { LeadForm } from "@/components/lead/lead-form";
 import { JsonLd } from "@/components/seo/json-ld";
 import { buttonClass } from "@/components/ui/button";
 import {
@@ -165,21 +164,14 @@ export default function CalculadoraDePrecosPage() {
           className="mt-14 rounded-2xl bg-neutral-200 p-6 sm:p-8"
         >
           <h2 id="cta" className="text-2xl font-bold">
-            Receba mais conteúdos sobre preço e gestão
+            Um preço bem calculado só vira lucro se a taxa não comer a margem
           </h2>
           <p className="mt-3 max-w-3xl text-neutral-800">
-            Deixe seu contato para receber materiais da InfinitePay sobre
-            precificação, margem e organização financeira do seu negócio.
+            A taxa de pagamento entra na conta como percentual sobre a venda:
+            cada ponto a menos vai direto para o seu lucro, sem precisar
+            aumentar o preço.
           </p>
-
-          <div className="mt-6">
-            <LeadForm />
-          </div>
-
-          <p className="mt-8 text-neutral-800">
-            Quer receber suas vendas com taxas menores e ver esse lucro crescer?
-          </p>
-          <p className="mt-3">
+          <p className="mt-6">
             <CtaLink
               href={`${SITE_URL}/`}
               location="calculadora-rodape"

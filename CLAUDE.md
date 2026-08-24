@@ -23,7 +23,9 @@ Quando houver conflito entre uma decisão de UX/DX e a rastreabilidade da págin
 
 **Fora do escopo (por ora):** as páginas satélite editoriais (`/blog/precificacao/`, `/blog/como-precificar-um-produto/`, `/blog/formacao-preco-venda/` e as de Fase 2). Elas estão no roadmap e a arquitetura deve deixar espaço para elas — links internos, componentes de conteúdo reutilizáveis, sitemap extensível — mas **não as crie sem pedido explícito**.
 
-**Captura de lead:** implementar **apenas a interface e o contrato**. Formulário, validação client-side, estados de UI e a função de disparo dos eventos. **Não** criar Route Handler, banco, integração com CRM ou envio de e-mail. O submit deve chamar um adapter documentado (`submitLead`) que hoje resolve local e fica pronto para receber implementação real.
+**Captura de lead:** implementar **apenas a interface e o contrato**. Formulário (nome, e-mail e WhatsApp), validação client-side, estados de UI e a função de disparo dos eventos. **Não** criar Route Handler, banco, integração com CRM ou envio de e-mail. O submit deve chamar um adapter documentado (`submitLead`) que hoje resolve local e fica pronto para receber implementação real.
+
+A captura vive **dentro da ferramenta**, no painel de resultado, e não numa seção separada: é ali que a pessoa acabou de receber valor e tem motivo para se identificar.
 
 ---
 
@@ -195,7 +197,13 @@ Além do preço, o resultado deve mostrar a **decomposição** (custo, impostos,
 
 Mobile-first — a maior parte do tráfego dessas keywords é mobile. Menos campos possível, valores padrão sensatos, resultado visível sem clique em "calcular" (recalcular ao digitar), sem etapa desnecessária.
 
-**O resultado do cálculo nunca fica atrás do formulário de lead.** A captura acontece depois do valor entregue (ex.: salvar/enviar o resultado, receber a planilha). Bloquear valor cedo demais derruba a conversão e o sinal de qualidade da página.
+**O preço nunca fica atrás do formulário.** Ele é a promessa da página: quem chegou buscando "quanto cobrar" recebe a resposta sem pagar pedágio. A contrapartida pelo contato é o **detalhamento** — a decomposição de quanto do preço é custo, imposto, taxa e lucro.
+
+O princípio: **entregar a resposta, cobrar pelo aprofundamento.** Bloquear a resposta derruba a conversão e o sinal de qualidade da página; não pedir nada desperdiça o único momento em que a pessoa tem motivo para se identificar.
+
+O bloqueio precisa ser **visível e nomeado**: os rótulos do detalhamento ficam legíveis e só os valores são ocultados. Ninguém troca dados pessoais por uma área borrada sem saber o que há nela.
+
+**O gate não pode depender de CSS.** `blur` sai no DevTools em dois segundos. Enquanto bloqueado, os valores reais não entram no DOM — vão placeholders. Como o cálculo é client-side, isso é uma barreira de UX, não de segurança: quem quiser refazer a conta no console consegue. Tornar o gate inviolável exigiria calcular o detalhamento no servidor depois da captura, o que não se justifica aqui.
 
 ---
 
@@ -235,8 +243,11 @@ Eventos definidos no roadmap, disparados por `web/lib/analytics/`:
 | `tool_click` | interação inicial com a ferramenta |
 | `tool_start` | primeiro campo preenchido |
 | `tool_complete` | resultado gerado |
-| `lead_cta_click` | clique no CTA de captura |
+| `lead_cta_click` | clique em "Ver o detalhamento", que abre o formulário |
 | `lead_generated` | submissão válida do formulário |
+| `site_cta_click` | clique em link que leva para fora do site |
+
+`site_cta_click` é uma extensão ao roadmap. Um clique de saída não pertence ao funil de lead: contá-lo como `lead_cta_click` inflaria o numerador e destruiria a taxa `lead_cta_click → lead_generated`, justamente o número que a Fase 4 (CRO) precisa otimizar.
 
 > O roadmap grafa `too_complete`; é typo. Usar `tool_complete` e registrar a divergência ao entregar.
 
@@ -282,6 +293,7 @@ Derivada de material publicado da própria InfinitePay (blocos de taxas do site)
 |---|---|
 | Ação primária | `bg-green-500` + texto `neutral-900`, pill (`rounded-full`) |
 | Ação secundária | `bg-neutral-200` + texto `neutral-900`, pill, **sem contorno** |
+| Ação sobre superfície colorida | `bg-neutral-900` + texto branco (variante `contrast`) — o botão verde sumiria dentro do painel verde |
 | Cards e superfícies | `bg-neutral-200` preenchido, `rounded-2xl`, sem borda |
 | Destaque de valor em texto | `text-purple-600` (o papel do "GRÁTIS" nos cards de taxa) |
 | Links, breadcrumb, numeração | `text-purple-600` |

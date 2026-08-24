@@ -11,6 +11,11 @@ const VARIANTS = {
   primary: "bg-green-500 text-neutral-900 hover:bg-green-300",
   /** Cinza claro com texto preto: acoes secundarias, sem contorno. */
   secondary: "bg-neutral-200 text-neutral-900 hover:bg-neutral-400",
+  /**
+   * Preto sobre superficie colorida. O botao primario e verde e sumiria
+   * dentro do painel de resultado, que tambem e verde.
+   */
+  contrast: "bg-neutral-900 text-white hover:bg-neutral-800",
 } as const;
 
 export type ButtonVariant = keyof typeof VARIANTS;

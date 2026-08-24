@@ -4,6 +4,9 @@
  * Observacao: o roadmap grafa "too_complete"; e um typo. Padronizamos
  * "tool_complete".
  *
+ * "lead_cta_click" marca a intencao de virar lead: e o clique que abre o
+ * formulario de liberacao do detalhamento, dentro da ferramenta.
+ *
  * "page_view" nao esta aqui de proposito: o container de GA4/GTM ja emite o
  * page_view sozinho. Criar uma ilha client so para dispara-lo adicionaria
  * JavaScript a uma pagina que precisa do minimo possivel.
@@ -13,7 +16,14 @@ export type ConversionEvent =
   | "tool_start"
   | "tool_complete"
   | "lead_cta_click"
-  | "lead_generated";
+  | "lead_generated"
+  /**
+   * Extensao ao roadmap. Cliques que levam a pessoa para FORA do site nao
+   * pertencem ao funil de lead: contá-los como "lead_cta_click" inflaria o
+   * numerador e destruiria a taxa lead_cta_click -> lead_generated, que e
+   * exatamente o que a fase de CRO precisa otimizar.
+   */
+  | "site_cta_click";
 
 export type EventPayload = Record<string, string | number | boolean>;
 
