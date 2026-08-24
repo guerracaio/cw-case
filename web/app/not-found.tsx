@@ -14,7 +14,7 @@ export default function NotFound() {
         O endereço que você abriu não existe ou foi movido.
       </p>
       <p className="mt-6">
-        <Link href={ROUTES.calculator} className="underline">
+        <Link href={ROUTES.calculator} className="text-purple-600 hover:underline">
           Ir para a calculadora de preço de venda
         </Link>
       </p>

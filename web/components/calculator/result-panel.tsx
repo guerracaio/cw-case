@@ -18,8 +18,8 @@ export type ResultState =
 
 function Row({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex items-baseline justify-between gap-4 border-t border-neutral-900/15 py-2">
-      <dt className="text-sm">{label}</dt>
+    <div className="flex items-baseline justify-between gap-4 border-t border-neutral-400 py-2">
+      <dt className="text-sm text-neutral-800">{label}</dt>
       <dd className="text-sm font-medium tabular-nums">{value}</dd>
     </div>
   );
@@ -28,8 +28,10 @@ function Row({ label, value }: { label: string; value: string }) {
 /**
  * Painel de resultado.
  *
- * Fundo verde da marca com texto preto: o verde da InfinitePay tem luminancia
- * altissima e so funciona como superficie, nunca como cor de texto.
+ * Usa green-100, e nao green-500: o verde forte da marca esta reservado para
+ * a acao primaria (o CTA). Um painel grande em green-500 competiria com ele.
+ * O verde claro marca o resultado como superficie distinta sem disputar
+ * atencao, e o peso fica no numero, em preto.
  */
 export function ResultPanel({ result }: { result: ResultState }) {
   if (result.state === "empty") {
@@ -44,7 +46,7 @@ export function ResultPanel({ result }: { result: ResultState }) {
     return (
       <div
         role="alert"
-        className="rounded-2xl border border-neutral-900 bg-neutral-200 p-6 text-sm text-neutral-900"
+        className="rounded-2xl bg-white p-6 text-sm text-neutral-900"
       >
         {ERROR_MESSAGES[result.error]}
       </div>
@@ -54,8 +56,8 @@ export function ResultPanel({ result }: { result: ResultState }) {
   const { breakdown } = result;
 
   return (
-    <div className="rounded-2xl bg-green-500 p-6 text-neutral-900">
-      <p className="text-sm font-medium">Preço de venda sugerido</p>
+    <div className="rounded-2xl bg-green-100 p-6 text-neutral-900">
+      <p className="text-sm text-neutral-800">Preço de venda sugerido</p>
       <p
         className="mt-1 text-4xl font-bold tabular-nums"
         aria-live="polite"

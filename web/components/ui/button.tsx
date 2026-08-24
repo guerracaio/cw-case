@@ -7,11 +7,10 @@
  */
 
 const VARIANTS = {
-  /** Roxo da marca sobre branco: o CTA primario. */
-  primary: "bg-purple-600 text-white hover:bg-purple-600/90",
-  /** Contorno neutro, para acoes secundarias. */
-  secondary:
-    "border border-neutral-900 text-neutral-900 hover:bg-neutral-200",
+  /** Verde da marca com texto preto: a acao primaria. */
+  primary: "bg-green-500 text-neutral-900 hover:bg-green-300",
+  /** Cinza claro com texto preto: acoes secundarias, sem contorno. */
+  secondary: "bg-neutral-200 text-neutral-900 hover:bg-neutral-400",
 } as const;
 
 export type ButtonVariant = keyof typeof VARIANTS;

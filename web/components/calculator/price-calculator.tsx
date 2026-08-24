@@ -146,12 +146,12 @@ export function PriceCalculator() {
     <div
       onPointerDown={registerInteraction}
       onFocusCapture={registerInteraction}
-      className="rounded-2xl border border-neutral-200 p-5 sm:p-8"
+      className="rounded-2xl bg-neutral-200 p-5 sm:p-8"
     >
       <div
         role="group"
         aria-label="Tipo de precificação"
-        className="inline-flex rounded-full border border-neutral-200 p-1"
+        className="inline-flex rounded-full bg-white p-1"
       >
         <button
           type="button"

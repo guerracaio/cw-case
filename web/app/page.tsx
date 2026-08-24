@@ -21,7 +21,7 @@ export default function HomePage() {
       <h2 className="mt-12 text-2xl font-bold">Calculadoras disponíveis</h2>
       <ul className="mt-4">
         <li>
-          <Link href={ROUTES.calculator} className="underline">
+          <Link href={ROUTES.calculator} className="text-purple-600 hover:underline">
             Calculadora de preço de venda
           </Link>
           <p className="mt-1 text-neutral-800">

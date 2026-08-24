@@ -162,7 +162,7 @@ export default function CalculadoraDePrecosPage() {
 
         <section
           aria-labelledby="cta"
-          className="mt-14 rounded-2xl border border-neutral-200 p-6 sm:p-8"
+          className="mt-14 rounded-2xl bg-neutral-200 p-6 sm:p-8"
         >
           <h2 id="cta" className="text-2xl font-bold">
             Receba mais conteúdos sobre preço e gestão
@@ -183,7 +183,7 @@ export default function CalculadoraDePrecosPage() {
             <CtaLink
               href={`${SITE_URL}/`}
               location="calculadora-rodape"
-              className={buttonClass("primary")}
+              className={buttonClass("secondary")}
             >
               Conhecer a InfinitePay
             </CtaLink>

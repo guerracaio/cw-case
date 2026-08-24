@@ -78,7 +78,7 @@ export function ProductExample() {
         Os percentuais somam {formatPercent(total)}, então sobra{" "}
         {formatDecimal(divisor)} do preço para pagar o custo. A conta é{" "}
         {formatBRL(breakdown.directCost)} dividido por {formatDecimal(divisor)},
-        que resulta em <strong>{formatBRL(breakdown.price)}</strong>.
+        que resulta em <strong className="text-purple-600">{formatBRL(breakdown.price)}</strong>.
       </p>
 
       <Table
@@ -120,14 +120,14 @@ export function ServiceExample() {
         cobrir {formatBRL(monthlyNeed)} por mês. Dividindo por{" "}
         {formatDecimal(SERVICE_EXAMPLE.productiveHours)} horas produtivas, cada
         hora de trabalho custa{" "}
-        <strong>{formatBRL(breakdown.hourlyCost ?? 0)}</strong>.
+        <strong className="text-purple-600">{formatBRL(breakdown.hourlyCost ?? 0)}</strong>.
       </p>
       <p className="mt-2 text-neutral-800">
         Em um serviço de {formatDecimal(SERVICE_EXAMPLE.serviceHours)} horas com{" "}
         {formatBRL(SERVICE_EXAMPLE.materials)} de material, o custo direto é{" "}
         {formatBRL(breakdown.directCost)}. Com {formatPercent(total)} de
         impostos, taxa e margem, o preço fica em{" "}
-        <strong>{formatBRL(breakdown.price)}</strong>.
+        <strong className="text-purple-600">{formatBRL(breakdown.price)}</strong>.
       </p>
 
       <Table

@@ -21,7 +21,7 @@ export function Breadcrumb({ items }: { items: Crumb[] }) {
               {isLast ? (
                 <span aria-current="page">{item.name}</span>
               ) : (
-                <Link href={item.path} className="underline">
+                <Link href={item.path} className="text-purple-600 hover:underline">
                   {item.name}
                 </Link>
               )}

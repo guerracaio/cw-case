@@ -274,7 +274,23 @@ white:   '#FFFFFF'
 
 `green-500` é altíssima luminância: serve como **fundo** de destaque ou preenchimento, nunca como cor de texto sobre claro. Alvo de contraste: WCAG AA no mínimo, AAA para corpo de texto.
 
-Aplicação sugerida: CTA primário `purple-600` com texto branco; destaque de resultado / superfície de ênfase `green-500` com texto `neutral-900`; superfícies neutras `white` e `neutral-200`.
+### Hierarquia de aplicação
+
+Derivada de material publicado da própria InfinitePay (blocos de taxas do site), não inventada:
+
+| Elemento | Tratamento |
+|---|---|
+| Ação primária | `bg-green-500` + texto `neutral-900`, pill (`rounded-full`) |
+| Ação secundária | `bg-neutral-200` + texto `neutral-900`, pill, **sem contorno** |
+| Cards e superfícies | `bg-neutral-200` preenchido, `rounded-2xl`, sem borda |
+| Destaque de valor em texto | `text-purple-600` (o papel do "GRÁTIS" nos cards de taxa) |
+| Links, breadcrumb, numeração | `text-purple-600` |
+| Divisórias internas | `border-neutral-200` / `border-neutral-400` |
+| Superfície de resultado | `bg-green-100` — o verde forte fica reservado à ação primária |
+
+**Roxo não é cor de botão.** Ele destaca texto, link e ícone. **Verde forte é a ação**, e por isso só pode existir um `green-500` disputando atenção por seção: dois botões primários juntos anulam a hierarquia — o segundo vira `secondary`.
+
+Uma tela dominada por roxo ou verde está fora da marca: o fundo é branco, o texto é preto, e os acentos são pontuais.
 
 ### Tipografia
 

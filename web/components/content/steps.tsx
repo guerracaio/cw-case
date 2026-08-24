@@ -7,7 +7,7 @@ export function Steps() {
       {HOW_TO_STEPS.map((step, index) => (
         <li key={step.name}>
           <h3 className="font-medium">
-            {index + 1}. {step.name}
+            <span className="text-purple-600">{index + 1}.</span> {step.name}
           </h3>
           <p className="mt-1 text-neutral-800">{step.text}</p>
         </li>
