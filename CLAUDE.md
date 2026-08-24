@@ -32,7 +32,7 @@ Quando houver conflito entre uma decisão de UX/DX e a rastreabilidade da págin
 | Artefato | O que governa |
 |---|---|
 | [assets/diretrizes-rendering-seo-aeo.md](assets/diretrizes-rendering-seo-aeo.md) | Arquitetura de rendering. **Leitura obrigatória, seguir estritamente.** |
-| [assets/Guia_de_Marca_InfinitePay.pdf](assets/Guia_de_Marca_InfinitePay.pdf) | Marca. O design system abaixo é a tradução dele para código. |
+| [assets/Guia_de_Marca_InfinitePay.pdf](assets/Guia_de_Marca_InfinitePay.pdf) | Marca. O design system abaixo é a tradução dele para código. Material público, distribuído pela própria InfinitePay. |
 | [assets/img/](assets/img/) | Arquivos de logo. |
 | [Roadmap SEO + AEO](Roadmap%20SEO%20+%20AEO%20-%20Calculadora%20de%20preços%20de%20produtos%20e%20serviços.pdf) | URLs, keywords-alvo, eventos de tracking, fases. |
 | [outputs/seo-demand-maps/](outputs/seo-demand-maps/) | Keywords, volumes, KD, concorrentes e o diagnóstico do gap. |
