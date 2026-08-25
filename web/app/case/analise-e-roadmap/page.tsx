@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { Breadcrumb, type Crumb } from "@/components/content/breadcrumb";
 import { AiSummary } from "@/components/doc/ai-summary";
@@ -107,6 +108,34 @@ function TocList({ dense = false }: { dense?: boolean }) {
   );
 }
 
+/**
+ * Atalho para o modo Apresentação.
+ *
+ * Fica acima do índice porque é uma escolha de formato, não um destino dentro
+ * do texto: quem abre este documento para apresentá-lo decide isso antes de
+ * começar a ler.
+ */
+function PresentationLink({ className }: { className?: string }) {
+  return (
+    <Link
+      href={ROUTES.caseDocPresentation}
+      className={`flex items-center justify-between gap-3 rounded-xl bg-neutral-900 px-4 py-3 text-white hover:bg-neutral-800 ${className ?? ""}`}
+    >
+      <span>
+        <span className="block text-[11px] font-medium tracking-[0.14em] text-green-500 uppercase">
+          Modo apresentação
+        </span>
+        <span className="mt-0.5 block text-xs text-white/80">
+          Só os números, tabelas e etapas
+        </span>
+      </span>
+      <span aria-hidden="true" className="text-lg leading-none">
+        →
+      </span>
+    </Link>
+  );
+}
+
 export default function CaseDocPage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-8">
@@ -116,6 +145,7 @@ export default function CaseDocPage() {
             aria-label="Índice do documento"
             className="sticky top-6 max-h-[calc(100vh-3rem)] overflow-y-auto pb-10"
           >
+            <PresentationLink className="mb-6" />
             <p className="mb-3 text-[11px] font-medium tracking-[0.14em] text-neutral-800 uppercase">
               Neste documento
             </p>
@@ -167,6 +197,8 @@ export default function CaseDocPage() {
               <TocList dense />
             </nav>
           </details>
+
+          <PresentationLink className="mt-4 lg:hidden" />
 
           <AiSummary className="mt-4 lg:hidden" />
 

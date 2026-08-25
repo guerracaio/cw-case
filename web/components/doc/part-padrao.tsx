@@ -1,42 +1,12 @@
 /** Parte 2 do documento do case: o padrão de publicação. */
 
+import {
+  CHECKLIST_AEO,
+  CHECKLIST_SEO,
+  EVENTOS,
+} from "@/content/case/analise-e-roadmap";
+
 import { CheckIcon, Code, H3, Note, PartHeading, TD, TH, TableWrap } from "./prose";
-
-const CHECKLIST_SEO = [
-  "robots.txt, sitemap e HTTPS",
-  "query primária definida",
-  "intenção definida",
-  "title",
-  "H1",
-  "URL",
-  "headings",
-  "meta description",
-  "canonical",
-  "conteúdo indexável",
-  "links internos",
-  "schema pertinente",
-  "Core Web Vitals, especialmente mobile",
-];
-
-const CHECKLIST_AEO = [
-  "responder perguntas diretamente",
-  "usar headings em formato de perguntas reais",
-  "criar definições curtas e objetivas",
-  "incluir FAQs alinhadas às dúvidas reais de busca",
-  "mostrar fórmulas explicitamente",
-  "usar exemplos numéricos",
-  "estruturar passos",
-];
-
-const EVENTOS: Array<[string, string]> = [
-  ["page_view", "carregamento da página"],
-  ["tool_click", "interação inicial com a ferramenta"],
-  ["tool_start", "primeiro campo preenchido"],
-  ["tool_complete", "resultado gerado"],
-  ["lead_cta_click", "clique no CTA que abre o formulário"],
-  ["lead_generated", "submissão válida do formulário"],
-  ["site_cta_click", "clique em link que leva para fora do site"],
-];
 
 /*
   Checklist com marca de conferido no lugar do ponto. Aqui o icone diz algo
@@ -47,7 +17,7 @@ const EVENTOS: Array<[string, string]> = [
   Em duas colunas a partir do tablet: os itens sao curtos, e uma coluna so
   deixava a metade direita da pagina vazia por vinte linhas.
 */
-function Checklist({ items }: { items: string[] }) {
+function Checklist({ items }: { items: readonly string[] }) {
   return (
     <ul className="mt-4 grid gap-x-8 gap-y-2 sm:grid-cols-2">
       {items.map((item) => (

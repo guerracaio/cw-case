@@ -45,6 +45,7 @@ export const ROUTES = {
   home: "/",
   calculator: "/ferramentas/calculadora-de-precos/",
   caseDoc: "/case/analise-e-roadmap/",
+  caseDocPresentation: "/case/analise-e-roadmap/apresentacao/",
 } as const;
 
 export function absoluteUrl(path: string): string {

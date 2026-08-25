@@ -13,45 +13,12 @@ import {
   TableWrap,
 } from "./prose";
 
-const FASE_1_PAGINAS = [
-  ["1", "/blog/precificacao/", "precificacao · precificacao de produtos", "18.700", "Editorial", false],
-  ["2", "/blog/como-precificar-um-produto/", "como precificar um produto", "4.100", "Editorial", false],
-  ["3", "/blog/formacao-preco-venda/", "formacao de preco de venda · preco de venda formula", "640", "Editorial", false],
-  ["—", "/ferramentas/calculadora-de-precos/", "calculadora de preco de venda · como calcular preco de venda", "1.090", "Ferramenta + informacional", true],
-] as const;
-
-const FASE_2_PAGINAS = [
-  ["4", "/blog/precificacao-de-servicos/", "precificacao de servicos · quanto cobrar por um servico", "2.500", "Editorial"],
-  ["5", "/blog/quanto-cobrar-por-hora-de-trabalho/", "quanto cobrar por hora de trabalho", "1.600", "Editorial"],
-  ["6", "/blog/calcular-preco-por-quilo/", "calcular preco por quilo", "540", "Editorial/utilitário"],
-  ["7", "/blog/quanto-cobrar-por-unha/", "quanto cobrar por unha", "3.100", "Editorial/utilitário"],
-  ["8", "/blog/quanto-cobrar-por-um-bolo/", "quanto cobrar por um bolo", "2.400", "Editorial/utilitário"],
-  ["9", "/blog/quanto-cobrar-por-corte-de-cabelo/", "quanto cobrar por corte de cabelo", "2.200", "Editorial/utilitário"],
-  ["10", "/blog/quanto-cobrar-por-marmita/", "quanto cobrar por marmita", "1.400", "Editorial/utilitário"],
-  ["11", "/blog/quanto-cobrar-por-frete-proprio/", "quanto cobrar por frete proprio", "880", "Editorial/utilitário"],
-] as const;
-
-const FASE_3 = [
-  ["Identificar páginas com tração", "impressões crescendo, rankings entre as posições 1 e 20, aumento de cliques, primeiras referências em AI e answer engines."],
-  ["Priorizar vencedores", "maior combinação de demanda, posição atual, CTR, potencial de avanço e contribuição para o uso da ferramenta."],
-  ["Atualizar conteúdo", "melhorar a cobertura da intenção, adicionar exemplos, FAQs, dados e respostas faltantes, reforçar trechos que já aparecem para novas buscas."],
-  ["Melhorar CTR", "testar title, ajustar meta description, alinhar o resultado da SERP ao conteúdo real."],
-  ["Reforçar internal linking", "mais links internos para páginas com potencial, com âncoras mais descritivas."],
-  ["Intensificar autoridade externa", "ampliar backlinks, buscar menções de marca, divulgar a calculadora como recurso útil e priorizar páginas que já demonstraram tração."],
-  ["Revisar AEO", "melhorar respostas diretas, reforçar entidades e fontes, atualizar FAQs, tornar fórmulas, dados e exemplos mais citáveis."],
-  ["Reavaliar páginas fracas", "atualizar, reposicionar a intenção, consolidar com outra URL quando houver sobreposição, e parar de investir igualmente em páginas sem sinal de resposta."],
-] as const;
-
-const FASE_4 = [
-  ["Identificar gargalos do funil", "página satélite → ferramenta, tool start, tool completion, CTA → formulário, formulário → lead."],
-  ["Testar CTAs", "copy, posicionamento, frequência e formato."],
-  ["Otimizar a lead bridge", "testar o momento da captura, o benefício oferecido e, acima de tudo, evitar bloquear valor cedo demais."],
-  ["Melhorar a UX da ferramenta", "reduzir etapas, simplificar campos, deixar cálculo e resultado mais claros, melhorar a experiência mobile."],
-  ["Otimizar o formulário", "reduzir campos desnecessários, melhorar labels e mensagens, testar captura progressiva quando fizer sentido."],
-  ["Executar testes A/B", "CTA, proposta de valor, layout, lead bridge e formulário."],
-  ["Avaliar a qualidade da conversão", "lead rate, conversão por página de origem e por tipo de intenção."],
-  ["Aplicar aprendizados", "escalar variações vencedoras, corrigir os pontos de maior abandono e priorizar as otimizações de maior impacto."],
-] as const;
+import {
+  FASE_1_PAGINAS,
+  FASE_2_PAGINAS,
+  FASE_3,
+  FASE_4,
+} from "@/content/case/analise-e-roadmap";
 
 function NumberedSteps({
   items,

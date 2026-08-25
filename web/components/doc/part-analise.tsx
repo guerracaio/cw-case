@@ -1,5 +1,11 @@
 /** Parte 1 do documento do case: a análise. */
 
+import {
+  ETAPAS,
+  RANKING,
+  SUBGRUPOS,
+} from "@/content/case/analise-e-roadmap";
+
 import { GeminiLogo, OpenAiLogo } from "./ai-logos";
 import {
   Callout,
@@ -18,32 +24,6 @@ import {
   TH,
   TableWrap,
 } from "./prose";
-
-const ETAPAS = [
-  ["1", "Mapear demanda", "Onde existe demanda de busca comprovada?", "Volume bruto não serve como critério", false],
-  ["2", "Identificar utility intent", "Quais demandas são de fazer, não de aprender?", "Sobram mais candidatos do que capacidade de execução", false],
-  ["3", "Encontrar gaps competitivos", "Quais estão mal atendidas pelos concorrentes?", "Gap alto isolado também engana", false],
-  ["4", "Priorizar oportunidade de SEO", "Quais combinam demanda, utility fit e brecha?", "Falta a dimensão de negócio", false],
-  ["5", "Validar business fit", "Quais têm aderência ao negócio e lead bridge?", "Falta o custo de execução", false],
-  ["6", "Avaliar esforço e escolher", "Qual tem a melhor relação potencial/dificuldade?", "Calculadora de preços", true],
-] as const;
-
-const RANKING = [
-  ["1", "Calculadora de preços de produtos e serviços", "41.040", "97,9%", "5", "3", "3", "200.800", true],
-  ["2", "Gerador de QR Code", "40.000", "55,0%", "5", "3", "2", "165.000", false],
-  ["3", "Comparador de maquininhas", "81.866", "40,0%", "4", "5", "4", "163.880", false],
-  ["4", "Planilha de vendas", "2.900", "100,0%", "5", "3", "1", "43.500", false],
-  ["5", "Simulador de antecipação de recebíveis", "18.290", "73,8%", "5", "1", "3", "22.483", false],
-  ["6", "Simulador de descontos", "1.610", "45,3%", "5", "3", "2", "5.475", false],
-  ["7", "Diagnóstico de prontidão para crédito", "4.118", "100,0%", "4", "1", "4", "4.118", false],
-] as const;
-
-const SUBGRUPOS = [
-  ["Precificação geral de produtos", "9", "25.150", "61,3%", "5,5", "96,5%", "Fase 1"],
-  ["Casos por profissão ou operação", "5", "9.980", "24,3%", "7,8", "100,0%", "Fase 2"],
-  ["Precificação geral de serviços", "4", "4.640", "11,3%", "9,4", "100,0%", "Fase 2"],
-  ["Modelos específicos de negócio", "3", "1.270", "3,1%", "2,6", "100,0%", "Residual"],
-] as const;
 
 export function PartAnalise() {
   return (
