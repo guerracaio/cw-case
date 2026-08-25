@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import {
   ClaudeLogo,
   GeminiLogo,
+  OpenAiLogo,
   PerplexityLogo,
 } from "@/components/doc/ai-logos";
 import { ROUTES, absoluteUrl } from "@/lib/seo/site";
@@ -34,11 +35,9 @@ const ASSISTANTS: Array<{ name: string; href: string; logo: ReactNode }> = [
     logo: <ClaudeLogo />,
   },
   {
-    // Sem simbolo: a marca do ChatGPT nao esta disponivel como tracado
-    // oficial aqui, e desenha-la de memoria sairia imprecisa.
     name: "ChatGPT",
     href: `https://chat.openai.com/?q=${QUERY}`,
-    logo: null,
+    logo: <OpenAiLogo />,
   },
   {
     name: "Gemini",
