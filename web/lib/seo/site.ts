@@ -44,6 +44,7 @@ export const INFINITEPAY_URL = "https://www.infinitepay.io";
 export const ROUTES = {
   home: "/",
   calculator: "/ferramentas/calculadora-de-precos/",
+  caseDoc: "/case/analise-e-roadmap/",
 } as const;
 
 export function absoluteUrl(path: string): string {

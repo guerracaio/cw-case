@@ -1,0 +1,57 @@
+<div class="slide">
+  <p class="eyebrow">03 · AEO</p>
+  <h1 class="title title--sm">Escrita para ser citada fora da própria página</h1>
+  <p class="lede" style="max-width: 940px">Um answer engine não recorta parágrafos: ele extrai o trecho que responde sozinho. Cada bloco da página foi escrito para fazer sentido isolado, sem "veja abaixo" e sem "como explicamos acima".</p>
+
+  <div class="body" style="margin-top: 22px">
+    <div class="row" style="gap: 40px; align-items: flex-start">
+      <div style="width: 560px; flex-shrink: 0">
+        <div class="card card--dark" style="padding: 18px 22px">
+          <p style="margin: 0; font-size: 16px; font-weight: 700">pergunta → resposta direta → explicação → exemplo → detalhamento</p>
+        </div>
+
+        <p class="eyebrow" style="color: #323232; margin-top: 20px">A estrutura da página</p>
+        <div style="margin-top: 12px; display: flex; flex-direction: column; gap: 8px">
+          <p style="margin: 0; font-size: 15px"><span class="mark">H1</span> &nbsp;Calculadora de preço de venda</p>
+          <p style="margin: 0; font-size: 15px; padding-left: 26px"><span class="mark">H2</span> &nbsp;Como calcular o preço de venda?</p>
+          <p style="margin: 0; font-size: 15px; padding-left: 26px"><span class="mark">H2</span> &nbsp;Fórmula do preço de venda</p>
+          <p style="margin: 0; font-size: 15px; padding-left: 26px"><span class="mark">H2</span> &nbsp;Exemplo prático</p>
+          <p style="margin: 0; font-size: 15px; padding-left: 26px"><span class="mark">H2</span> &nbsp;Como precificar um serviço</p>
+          <p style="margin: 0; font-size: 15px; padding-left: 26px"><span class="mark">H2</span> &nbsp;Perguntas frequentes</p>
+        </div>
+        <p class="note" style="margin-top: 16px">Headings são perguntas reais de busca, não rótulos genéricos — e a resposta objetiva vem imediatamente depois, antes de qualquer contexto.</p>
+      </div>
+
+      <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 18px">
+        <div>
+          <p class="eyebrow" style="color: #323232">Structured data no HTML inicial</p>
+          <div class="grid-2" style="margin-top: 12px; gap: 10px">
+            <span class="tag tag--purple kbd">WebApplication</span>
+            <span class="tag tag--purple kbd">BreadcrumbList</span>
+            <span class="tag tag--purple kbd">HowTo</span>
+            <span class="tag tag--purple kbd">FAQPage</span>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="margin: 0; font-size: 17px; font-weight: 700">Gerado do mesmo dado que a página renderiza</h3>
+          <p class="note" style="margin-top: 7px">O conteúdo mora em <span class="kbd">content/</span> como dado tipado. O schema e o texto na tela saem da mesma fonte, então é impossível marcar o que não está visível.</p>
+        </div>
+
+        <div>
+          <h3 style="margin: 0; font-size: 17px; font-weight: 700">Sem prometer rich result</h3>
+          <p class="note" style="margin-top: 7px">O rich result de FAQ está restrito no Google hoje. O schema segue valendo para answer engines — mantido pelo que ele comunica, não pelo enfeite na SERP.</p>
+        </div>
+
+        <div class="card card--green">
+          <p style="margin: 0; font-size: 15px; line-height: 1.45"><strong>Fórmulas como texto, não como imagem.</strong> "preço = custo ÷ (1 − percentuais)" é lido, copiado e citado. Um PNG ou um LaTeX renderizado por JS não é nenhuma das três coisas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>Definições curtas e autocontidas · exemplos com números concretos em reais</span>
+    <span>19</span>
+  </div>
+</div>

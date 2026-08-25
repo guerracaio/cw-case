@@ -11,7 +11,7 @@ O repositório reúne duas camadas: a **análise** que justifica a escolha da fe
 | | |
 |---|---|
 | 📊 **Apresentação da análise** | _arquivo a incluir_ — como a ferramenta foi escolhida a partir dos dados |
-| 🗺️ **Roadmap SEO + AEO** | [PDF](Roadmap%20SEO%20%2B%20AEO%20-%20Calculadora%20de%20pre%C3%A7os%20de%20produtos%20e%20servi%C3%A7os.pdf) — as quatro fases dos primeiros 90 dias |
+| 🗺️ **Análise e roadmap SEO + AEO** | [cw-case.vercel.app/case/analise-e-roadmap](https://cw-case.vercel.app/case/analise-e-roadmap/) — o método da análise, a escolha da ferramenta e as quatro fases dos primeiros 90 dias · [versão em Markdown](analise-e-roadmap-seo-aeo.md) |
 | 🧮 **Aplicação publicada** | [cw-case.vercel.app/ferramentas/calculadora-de-precos](https://cw-case.vercel.app/ferramentas/calculadora-de-precos/) |
 | 🎥 **Vídeo de apresentação** | _link a incluir_ — apresentação do resultado para a liderança de growth |
 

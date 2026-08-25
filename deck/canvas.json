@@ -1,0 +1,67 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html",       "title": "01 · Capa",                  "x": 0,    "y": 0,    "w": 1280, "h": 720 },
+    { "file": "Agenda.dc.html",     "title": "02 · A tese",                "x": 1376, "y": 0,    "w": 1280, "h": 720 },
+
+    { "file": "Bloco1.dc.html",     "title": "03 · Divisor · Análise",     "x": 0,    "y": 920,  "w": 1280, "h": 720 },
+    { "file": "Metodo.dc.html",     "title": "04 · Método",                "x": 1376, "y": 920,  "w": 1280, "h": 720 },
+    { "file": "Criterio.dc.html",   "title": "05 · Critério de decisão",   "x": 2752, "y": 920,  "w": 1280, "h": 720 },
+    { "file": "Ranking.dc.html",    "title": "06 · Ranking de hipóteses",  "x": 4128, "y": 920,  "w": 1280, "h": 720 },
+    { "file": "Gap.dc.html",        "title": "07 · O gap",                 "x": 5504, "y": 920,  "w": 1280, "h": 720 },
+    { "file": "Decisao.dc.html",    "title": "08 · A decisão",             "x": 6880, "y": 920,  "w": 1280, "h": 720 },
+
+    { "file": "Bloco2.dc.html",     "title": "09 · Divisor · Roadmap",     "x": 0,    "y": 1840, "w": 1280, "h": 720 },
+    { "file": "Noventa.dc.html",    "title": "10 · Os 90 dias",            "x": 1376, "y": 1840, "w": 1280, "h": 720 },
+    { "file": "Fase1.dc.html",      "title": "11 · Fase 1",                "x": 2752, "y": 1840, "w": 1280, "h": 720 },
+    { "file": "Fase2.dc.html",      "title": "12 · Fase 2",                "x": 4128, "y": 1840, "w": 1280, "h": 720 },
+    { "file": "Fase3.dc.html",      "title": "13 · Fase 3",                "x": 5504, "y": 1840, "w": 1280, "h": 720 },
+    { "file": "Fase4.dc.html",      "title": "14 · Fase 4",                "x": 6880, "y": 1840, "w": 1280, "h": 720 },
+    { "file": "Medicao.dc.html",    "title": "15 · O que medir",           "x": 8256, "y": 1840, "w": 1280, "h": 720 },
+
+    { "file": "Bloco3.dc.html",     "title": "16 · Divisor · Ferramenta",  "x": 0,    "y": 2760, "w": 1280, "h": 720 },
+    { "file": "Pagina.dc.html",     "title": "17 · A página publicada",    "x": 1376, "y": 2760, "w": 1280, "h": 720 },
+    { "file": "Rendering.dc.html",  "title": "18 · Rendering",             "x": 2752, "y": 2760, "w": 1280, "h": 720 },
+    { "file": "Aeo.dc.html",        "title": "19 · AEO",                   "x": 4128, "y": 2760, "w": 1280, "h": 720 },
+    { "file": "LeadBridge.dc.html", "title": "20 · Lead bridge",           "x": 5504, "y": 2760, "w": 1280, "h": 720 },
+
+    { "file": "Fecho.dc.html",      "title": "21 · Fechamento",            "x": 0,    "y": 3680, "w": 1280, "h": 720 }
+  ],
+  "annotations": [
+    {
+      "id": "abertura",
+      "x": -470,
+      "y": 40,
+      "w": 380,
+      "text": "ABERTURA\n\nCapa e a tese em uma frase. O objetivo é que ninguém precise esperar até o fim para saber o que foi construído e por quê.\n\n~1 min"
+    },
+    {
+      "id": "bloco-1",
+      "x": -470,
+      "y": 960,
+      "w": 380,
+      "text": "BLOCO 01 — ANÁLISE\n\nDo universo de dados a uma hipótese: método, critério, ranking, gap e decisão.\n\nO slide que carrega o argumento é o 07 (o gap). Os anteriores existem para que ele não pareça sorte.\n\n~6 min"
+    },
+    {
+      "id": "bloco-2",
+      "x": -470,
+      "y": 1880,
+      "w": 380,
+      "text": "BLOCO 02 — ROADMAP\n\nUm slide por fase, como você pediu, mais a visão dos 90 dias na frente e a medição no fim.\n\nO slide 15 (medição) fecha o bloco de propósito: é o que liga o plano ao que a Fase 4 vai otimizar.\n\n~7 min"
+    },
+    {
+      "id": "bloco-3",
+      "x": -470,
+      "y": 2800,
+      "w": 380,
+      "text": "BLOCO 03 — A FERRAMENTA\n\nDemo primeiro (17), decisões técnicas depois (18–20). Nesta ordem porque a plateia precisa ver a página antes de ouvir por que ela é estática.\n\nO ideal é abrir a página ao vivo no 17 e usar o slide só como apoio.\n\n~6 min"
+    },
+    {
+      "id": "fecho",
+      "x": -470,
+      "y": 3720,
+      "w": 380,
+      "text": "FECHAMENTO\n\nO que fica, próximos passos e os links.\n\n~1 min"
+    }
+  ],
+  "launch": { "view": "canvas" }
+}
