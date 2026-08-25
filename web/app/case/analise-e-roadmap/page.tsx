@@ -25,19 +25,26 @@ const DESCRIPTION =
   "Como o dataset foi analisado, por que a calculadora de preços foi a ferramenta escolhida e o que fazer nos primeiros 90 dias depois de publicá-la.";
 
 /*
-  Esta pagina fica FORA do indice, e por isso tambem fora do sitemap.
+  Indexavel, mas fora do sitemap. Sao duas coisas diferentes, e a distincao e
+  a decisao aqui.
 
-  A prioridade do projeto e a rastreabilidade da calculadora. Este documento e
-  material de entrega do case: fala de concorrentes, de metodo e do proprio
-  processo. Indexa-lo competiria com a ferramenta pelo tema do site e diluiria
-  o sinal topico da unica pagina que precisa ranquear. Publicada e acessivel
-  por link, mas nao disputando busca.
+  Esta pagina era `noindex`, para nao competir com a calculadora pelo tema do
+  site. O custo apareceu depois: `noindex` nao serve so ao Google. Parte dos
+  crawlers de IA le a diretiva e desiste da pagina, e este documento existe
+  justamente para ser lido por quem chega pelo link — inclusive por um
+  assistente. Uma pagina que se recusa a ser lida nao entrega o proprio
+  conteudo.
+
+  A prioridade do projeto continua sendo a rastreabilidade da calculadora. O
+  que preserva isso agora e a ausencia do sitemap, somada a ausencia de link
+  interno apontando para ca: sem nenhum dos dois caminhos, a busca praticamente
+  nao descobre esta URL sozinha. E omissao, nao proibicao — a diferenca e que
+  quem tem o endereco entra.
 */
 export const metadata: Metadata = buildMetadata({
   title: TITLE,
   description: DESCRIPTION,
   path: ROUTES.caseDoc,
-  noindex: true,
 });
 
 const CRUMBS: Crumb[] = [
