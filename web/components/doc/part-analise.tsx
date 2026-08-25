@@ -176,7 +176,7 @@ export function PartAnalise() {
         entrada de páginas novas em keywords de baixa dificuldade.
       </p>
 
-      <Callout label="O que corta contra">
+      <Callout tone="caveat" label="O que corta contra">
         <p>
           <strong>A amostra é uma fatia fina do domínio.</strong> O dataset traz
           37 keywords e 37 páginas da InfinitePay: cerca de{" "}
@@ -309,7 +309,7 @@ export function PartAnalise() {
         <strong>345.600 buscas/mês inendereçáveis</strong>, 22% do universo.
       </p>
 
-      <Callout label="Conclusão que abriu a etapa 2">
+      <Callout tone="next" label="Conclusão que abriu a etapa 2">
         <p>
           Volume bruto não é critério de priorização: o maior número da tabela é
           o mais inútil. Antes de comparar oportunidades é preciso filtrar o
@@ -413,7 +413,7 @@ export function PartAnalise() {
         busca teria descartado o cluster vencedor.
       </p>
 
-      <Callout label="Conclusão que abriu a etapa 3">
+      <Callout tone="next" label="Conclusão que abriu a etapa 3">
         <p>
           Restaram mais clusters com alto utility fit do que capacidade de
           construir e manter. Utility fit é condição necessária, não critério de
@@ -469,7 +469,7 @@ export function PartAnalise() {
         </li>
       </ul>
 
-      <Callout label="A inferência mais frágil da análise">
+      <Callout tone="caveat" label="A inferência mais frágil da análise">
         <p>
           Os concorrentes são fictícios e as URLs não são acessíveis. A natureza
           do conteúdo na SERP — editorial ou ferramenta — foi{" "}
@@ -501,7 +501,7 @@ export function PartAnalise() {
         bem.
       </p>
 
-      <Callout label="Conclusão que abriu a etapa 4">
+      <Callout tone="next" label="Conclusão que abriu a etapa 4">
         <p>
           Gap alto isolado também engana: clusters minúsculos costumam ter 100%
           de gap simplesmente porque ninguém se importa com eles. Demanda,
@@ -559,7 +559,7 @@ export function PartAnalise() {
         parcialmente ocupado contra menos volume quase inteiramente livre.
       </p>
 
-      <Callout label="Conclusão que abriu a etapa 5">
+      <Callout tone="next" label="Conclusão que abriu a etapa 5">
         <p>
           As três variáveis vindas do dataset não sabem nada sobre o negócio.
           Uma ferramenta pode ter demanda perfeita e gap perfeito para um
@@ -640,7 +640,7 @@ export function PartAnalise() {
         </tbody>
       </TableWrap>
 
-      <Callout label="Conclusão que abriu a etapa 6">
+      <Callout tone="next" label="Conclusão que abriu a etapa 6">
         <p>
           Business fit sozinho elegeria o comparador de maquininhas por larga
           margem. Mas construir e <strong>manter</strong> um comparador é outra

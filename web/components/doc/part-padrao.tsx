@@ -1,6 +1,6 @@
 /** Parte 2 do documento do case: o padrão de publicação. */
 
-import { Code, H3, Note, PartHeading, TD, TH, TableWrap } from "./prose";
+import { CheckIcon, Code, H3, Note, PartHeading, TD, TH, TableWrap } from "./prose";
 
 const CHECKLIST_SEO = [
   "robots.txt, sitemap e HTTPS",
@@ -38,11 +38,23 @@ const EVENTOS: Array<[string, string]> = [
   ["site_cta_click", "clique em link que leva para fora do site"],
 ];
 
+/*
+  Checklist com marca de conferido no lugar do ponto. Aqui o icone diz algo
+  verdadeiro sobre a lista: sao dois checklists de verificacao, item a item,
+  e nao enumeracoes quaisquer. Sao tambem as duas unicas listas seguidas da
+  Parte 2 — com pontos, viravam vinte linhas iguais.
+
+  Em duas colunas a partir do tablet: os itens sao curtos, e uma coluna so
+  deixava a metade direita da pagina vazia por vinte linhas.
+*/
 function Checklist({ items }: { items: string[] }) {
   return (
-    <ul className="mt-4 flex list-disc flex-col gap-2 pl-6 marker:text-purple-600">
+    <ul className="mt-4 grid gap-x-8 gap-y-2 sm:grid-cols-2">
       {items.map((item) => (
-        <li key={item}>{item}</li>
+        <li key={item} className="flex items-start gap-2.5">
+          <CheckIcon className="mt-[0.3em] size-3.5 shrink-0 text-purple-600" />
+          <span>{item}</span>
+        </li>
       ))}
     </ul>
   );
