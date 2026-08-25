@@ -40,8 +40,21 @@ const ASSISTANTS: Array<{ name: string; href: string; logo: ReactNode }> = [
     logo: <OpenAiLogo />,
   },
   {
+    /*
+      O Gemini nao entra pelo gemini.google.com/app: aquele endereco nao
+      documenta parametro de prompt e costuma abrir a conversa em branco.
+      O caminho que funciona e o AI Mode da busca, que roda em Gemini e
+      aceita a pergunta na propria URL — `udm=50` e o que troca a SERP
+      classica pelo modo de IA. E o mesmo caminho que a InfinitePay usa
+      hoje nas proprias paginas.
+
+      A URL de referencia trazia tambem `mstk` e `csuir`, que sao tokens de
+      sessao de quem gerou o link, e `aep`, que identifica a superficie de
+      entrada. Nada disso vale colado aqui: token de sessao alheia nao
+      transfere, e o resto e ruido.
+    */
     name: "Gemini",
-    href: `https://gemini.google.com/app?q=${QUERY}`,
+    href: `https://www.google.com/search?udm=50&q=${QUERY}`,
     logo: <GeminiLogo />,
   },
   {
