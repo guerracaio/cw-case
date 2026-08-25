@@ -1,3 +1,10 @@
+import type { ReactNode } from "react";
+
+import {
+  ClaudeLogo,
+  GeminiLogo,
+  PerplexityLogo,
+} from "@/components/doc/ai-logos";
 import { ROUTES, absoluteUrl } from "@/lib/seo/site";
 
 /**
@@ -10,9 +17,8 @@ import { ROUTES, absoluteUrl } from "@/lib/seo/site";
  * Sao links HTML reais, montados em build time. Nada aqui precisa de
  * JavaScript no cliente.
  *
- * Os nomes aparecem por extenso em vez de logotipo. Sao marcas registradas de
- * terceiros: redesenha-las de memoria produziria uma reproducao imprecisa, e
- * quatro circulos sem rotulo obrigariam a pessoa a adivinhar qual e qual.
+ * O nome fica ao lado da marca, e nao no lugar dela: quatro simbolos soltos
+ * obrigariam a pessoa a reconhecer cada um antes de escolher.
  */
 
 const PROMPT = `Resuma e analise o conteúdo desta página: ${absoluteUrl(
@@ -21,11 +27,29 @@ const PROMPT = `Resuma e analise o conteúdo desta página: ${absoluteUrl(
 
 const QUERY = encodeURIComponent(PROMPT);
 
-const ASSISTANTS: Array<{ name: string; href: string }> = [
-  { name: "Claude", href: `https://claude.ai/new?q=${QUERY}` },
-  { name: "ChatGPT", href: `https://chat.openai.com/?q=${QUERY}` },
-  { name: "Gemini", href: `https://gemini.google.com/app?q=${QUERY}` },
-  { name: "Perplexity", href: `https://www.perplexity.ai/search?q=${QUERY}` },
+const ASSISTANTS: Array<{ name: string; href: string; logo: ReactNode }> = [
+  {
+    name: "Claude",
+    href: `https://claude.ai/new?q=${QUERY}`,
+    logo: <ClaudeLogo />,
+  },
+  {
+    // Sem simbolo: a marca do ChatGPT nao esta disponivel como tracado
+    // oficial aqui, e desenha-la de memoria sairia imprecisa.
+    name: "ChatGPT",
+    href: `https://chat.openai.com/?q=${QUERY}`,
+    logo: null,
+  },
+  {
+    name: "Gemini",
+    href: `https://gemini.google.com/app?q=${QUERY}`,
+    logo: <GeminiLogo />,
+  },
+  {
+    name: "Perplexity",
+    href: `https://www.perplexity.ai/search?q=${QUERY}`,
+    logo: <PerplexityLogo />,
+  },
 ];
 
 export function AiSummary({ className }: { className?: string }) {
@@ -45,15 +69,16 @@ export function AiSummary({ className }: { className?: string }) {
         Abre o assistente com o endereço desta página já no prompt.
       </p>
 
-      <ul className="mt-3 flex flex-wrap gap-2">
+      <ul className="mt-3 grid grid-cols-2 gap-2">
         {ASSISTANTS.map((assistant) => (
           <li key={assistant.name}>
             <a
               href={assistant.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex rounded-full bg-white px-3 py-1.5 text-xs font-medium text-neutral-900 hover:bg-purple-0"
+              className="flex items-center justify-center gap-2 rounded-full bg-white px-3 py-2 text-xs font-medium text-neutral-900 hover:bg-purple-0"
             >
+              {assistant.logo}
               {assistant.name}
             </a>
           </li>
