@@ -256,6 +256,41 @@ a:hover { color: #5806c2; }
 }
 
 .card--green .bullets li, .card--dark .bullets li { color: inherit; }
+
+/*
+  Lista de verificacao. O check no lugar do ponto diz algo verdadeiro sobre a
+  lista: sao checklists item a item, nao enumeracoes quaisquer. Desenhado com
+  duas bordas giradas, sem SVG.
+*/
+.checks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checks li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 13.5px;
+  line-height: 1.35;
+  color: var(--n800);
+}
+
+.checks li::before {
+  content: "";
+  position: absolute;
+  left: 1px;
+  top: 3px;
+  width: 10px;
+  height: 5px;
+  border-left: 2px solid var(--purple-600);
+  border-bottom: 2px solid var(--purple-600);
+  transform: rotate(-45deg);
+}
+
 .card--green .bullets li::before { background: var(--n900); }
 .card--dark .bullets li::before { background: var(--green-500); }
 
