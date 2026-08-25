@@ -1,66 +1,94 @@
 {
   "artboards": [
-    { "file": "Main.dc.html",       "title": "01 · Capa",                  "x": 0,    "y": 0,    "w": 1280, "h": 720 },
-    { "file": "Agenda.dc.html",     "title": "02 · A tese",                "x": 1376, "y": 0,    "w": 1280, "h": 720 },
+    { "file": "Main.dc.html",     "title": "01 · Capa e tese · 0:30",        "x": 0,    "y": 0,    "w": 1280, "h": 720 },
+    { "file": "Dataset.dc.html",  "title": "02 · O dataset · 1:10",         "x": 1376, "y": 0,    "w": 1280, "h": 720 },
+    { "file": "Criterio.dc.html", "title": "03 · O critério · 0:45",        "x": 2752, "y": 0,    "w": 1280, "h": 720 },
+    { "file": "Descarte.dc.html", "title": "04 · O descarte · 1:30",        "x": 4128, "y": 0,    "w": 1280, "h": 720 },
+    { "file": "Gap.dc.html",      "title": "05 · O gap · 0:55",             "x": 5504, "y": 0,    "w": 1280, "h": 720 },
 
-    { "file": "Bloco1.dc.html",     "title": "03 · Divisor · Análise",     "x": 0,    "y": 920,  "w": 1280, "h": 720 },
-    { "file": "Metodo.dc.html",     "title": "04 · Método",                "x": 1376, "y": 920,  "w": 1280, "h": 720 },
-    { "file": "Criterio.dc.html",   "title": "05 · Critério de decisão",   "x": 2752, "y": 920,  "w": 1280, "h": 720 },
-    { "file": "Ranking.dc.html",    "title": "06 · Ranking de hipóteses",  "x": 4128, "y": 920,  "w": 1280, "h": 720 },
-    { "file": "Gap.dc.html",        "title": "07 · O gap",                 "x": 5504, "y": 920,  "w": 1280, "h": 720 },
-    { "file": "Decisao.dc.html",    "title": "08 · A decisão",             "x": 6880, "y": 920,  "w": 1280, "h": 720 },
-
-    { "file": "Bloco2.dc.html",     "title": "09 · Divisor · Roadmap",     "x": 0,    "y": 1840, "w": 1280, "h": 720 },
-    { "file": "Noventa.dc.html",    "title": "10 · Os 90 dias",            "x": 1376, "y": 1840, "w": 1280, "h": 720 },
-    { "file": "Fase1.dc.html",      "title": "11 · Fase 1",                "x": 2752, "y": 1840, "w": 1280, "h": 720 },
-    { "file": "Fase2.dc.html",      "title": "12 · Fase 2",                "x": 4128, "y": 1840, "w": 1280, "h": 720 },
-    { "file": "Fase3.dc.html",      "title": "13 · Fase 3",                "x": 5504, "y": 1840, "w": 1280, "h": 720 },
-    { "file": "Fase4.dc.html",      "title": "14 · Fase 4",                "x": 6880, "y": 1840, "w": 1280, "h": 720 },
-    { "file": "Medicao.dc.html",    "title": "15 · O que medir",           "x": 8256, "y": 1840, "w": 1280, "h": 720 },
-
-    { "file": "Bloco3.dc.html",     "title": "16 · Divisor · Ferramenta",  "x": 0,    "y": 2760, "w": 1280, "h": 720 },
-    { "file": "Pagina.dc.html",     "title": "17 · A página publicada",    "x": 1376, "y": 2760, "w": 1280, "h": 720 },
-    { "file": "Rendering.dc.html",  "title": "18 · Rendering",             "x": 2752, "y": 2760, "w": 1280, "h": 720 },
-    { "file": "Aeo.dc.html",        "title": "19 · AEO",                   "x": 4128, "y": 2760, "w": 1280, "h": 720 },
-    { "file": "LeadBridge.dc.html", "title": "20 · Lead bridge",           "x": 5504, "y": 2760, "w": 1280, "h": 720 },
-
-    { "file": "Fecho.dc.html",      "title": "21 · Fechamento",            "x": 0,    "y": 3680, "w": 1280, "h": 720 }
+    { "file": "Fit.dc.html",      "title": "06 · Por que a InfinitePay · 0:50", "x": 0,    "y": 1240, "w": 1280, "h": 720 },
+    { "file": "Roadmap.dc.html",  "title": "07 · Roadmap 90 dias · 1:15",   "x": 1376, "y": 1240, "w": 1280, "h": 720 },
+    { "file": "Pagina.dc.html",   "title": "08 · A página · 1:15",          "x": 2752, "y": 1240, "w": 1280, "h": 720 },
+    { "file": "Tecnico.dc.html",  "title": "09 · SEO técnico e AEO · 1:00", "x": 4128, "y": 1240, "w": 1280, "h": 720 },
+    { "file": "Fecho.dc.html",    "title": "10 · Fechamento · 0:40",        "x": 5504, "y": 1240, "w": 1280, "h": 720 }
   ],
   "annotations": [
     {
-      "id": "abertura",
-      "x": -470,
-      "y": 40,
-      "w": 380,
-      "text": "ABERTURA\n\nCapa e a tese em uma frase. O objetivo é que ninguém precise esperar até o fim para saber o que foi construído e por quê.\n\n~1 min"
+      "id": "orcamento",
+      "x": -560,
+      "y": 0,
+      "w": 430,
+      "text": "ORÇAMENTO DE 9:50\n\nDez slides para um vídeo de até 10 minutos. A proporção pedida está fechada:\n\n· Análise + roadmap (01–07) — 6:55, 70%\n· A página (08–10) — 2:55, 30%\n\nOs tempos abaixo somam 9:50 e deixam 10s de folga. Se estourar, os cortes na ordem: o slide 03 desce para 0:30 (a fórmula fala sozinha) e o 05 para 0:40 (os números estão na tela).\n\nCada slide tem um tempo escrito no título do artboard."
     },
     {
-      "id": "bloco-1",
-      "x": -470,
-      "y": 960,
-      "w": 380,
-      "text": "BLOCO 01 — ANÁLISE\n\nDo universo de dados a uma hipótese: método, critério, ranking, gap e decisão.\n\nO slide que carrega o argumento é o 07 (o gap). Os anteriores existem para que ele não pareça sorte.\n\n~6 min"
+      "id": "s01",
+      "x": 0,
+      "y": 790,
+      "w": 430,
+      "text": "01 · CAPA — 0:30\n\nAbrir com o número, não com a apresentação: \"41.040 buscas por mês, 97,9% sem ranking nosso, e nenhuma calculadora na SERP.\"\n\nDizer em uma frase o que foi construído e seguir. A capa substitui a agenda — ninguém precisa esperar o fim para saber a tese."
     },
     {
-      "id": "bloco-2",
-      "x": -470,
-      "y": 1880,
-      "w": 380,
-      "text": "BLOCO 02 — ROADMAP\n\nUm slide por fase, como você pediu, mais a visão dos 90 dias na frente e a medição no fim.\n\nO slide 15 (medição) fecha o bloco de propósito: é o que liga o plano ao que a Fase 4 vai otimizar.\n\n~7 min"
+      "id": "s02",
+      "x": 1376,
+      "y": 790,
+      "w": 430,
+      "text": "02 · O DATASET — 1:10\n\nÉ o slide de apontar para a tela. Três paradas, nesta ordem:\n\n1. Coluna volume — a demanda bruta do cluster.\n2. Coluna keyword_difficulty — mediana 6; barreira de entrada baixa.\n3. Coluna best_position_url — quase tudo /blog/. Mostrar a linha de \"calculadora de preco de venda\": quem rankeia em quinto é um ARTIGO. É a evidência do gap de formato.\n\nFechar na última linha: infinitepay.io, posição 34, 2 visitas/mês. Única presença em 21 keywords."
     },
     {
-      "id": "bloco-3",
-      "x": -470,
-      "y": 2800,
-      "w": 380,
-      "text": "BLOCO 03 — A FERRAMENTA\n\nDemo primeiro (17), decisões técnicas depois (18–20). Nesta ordem porque a plateia precisa ver a página antes de ouvir por que ela é estática.\n\nO ideal é abrir a página ao vivo no 17 e usar o slide só como apoio.\n\n~6 min"
+      "id": "s03",
+      "x": 2752,
+      "y": 790,
+      "w": 430,
+      "text": "03 · O CRITÉRIO — 0:45\n\nO argumento de uma frase: os dois maiores clusters não deveriam ser construídos, e o terceiro nem é endereçável.\n\nO exemplo que gruda é \"calculadora de IMC\" dentro do cluster de 326.780 buscas — intenção utilitária perfeita, negócio nenhum.\n\nLer a fórmula em voz alta uma vez e não detalhar as cinco variáveis: elas estão na tela e no documento."
     },
     {
-      "id": "fecho",
-      "x": -470,
-      "y": 3720,
-      "w": 380,
-      "text": "FECHAMENTO\n\nO que fica, próximos passos e os links.\n\n~1 min"
+      "id": "s04",
+      "x": 4128,
+      "y": 790,
+      "w": 430,
+      "text": "04 · O DESCARTE — 1:30\n\nO slide mais longo do vídeo, e é onde o brief cobra explicitamente \"por que descartou as outras\".\n\nNão ler as sete linhas. Gastar o tempo nas duas que doem:\n\n· Comparador de maquininhas — o dobro do volume e o MELHOR business fit. Perde por gap: 60% já rankeia, KD 17,6.\n· Gerador de QR Code — 45% já é da casa, e os concorrentes são os mais fortes do recorte.\n\nFechar admitindo o limite: Utility, Business e Effort são julgamento declarado — trocar uma nota reordena a lista."
+    },
+    {
+      "id": "s05",
+      "x": 5504,
+      "y": 790,
+      "w": 430,
+      "text": "05 · O GAP — 0:55\n\nO 97,9% é o número que a pessoa deve levar para casa. Dizer devagar.\n\nDepois só os dois de apoio: 1 ferramenta em 32 páginas relevantes, e KD mediano 6.\n\nA última linha prepara a Fase 2: serviços e casos por profissão têm 100% de gap. Não desenvolver aqui — é o gancho para o slide 07."
+    },
+    {
+      "id": "s06",
+      "x": 0,
+      "y": 2030,
+      "w": 430,
+      "text": "06 · POR QUE A INFINITEPAY — 0:50\n\nO slide de negócio, e o único roxo do deck.\n\nA frase é o título: a taxa de pagamento é um CAMPO do cálculo. A pessoa informa a taxa que paga e vê, em reais, quanto sai do lucro dela. Não é banner ao lado da ferramenta.\n\nO número para um líder de Growth é o 45%: o escopo sozinho vale quase metade do tráfego orgânico que o site tem hoje."
+    },
+    {
+      "id": "s07",
+      "x": 1376,
+      "y": 2030,
+      "w": 430,
+      "text": "07 · ROADMAP — 1:15\n\nO brief pede os principais pontos, sem detalhar — o detalhe está no documento. Uma frase por fase, no máximo.\n\nO que não pode faltar:\n\n· A lógica da ordem: aquisição antes de conversão, porque sem tráfego não há o que otimizar.\n· 95,4% do escopo coberto ao fim da Fase 2.\n· Os eventos entram na Fase 1, não na Fase 4.\n\nAqui fecha o bloco de 70%."
+    },
+    {
+      "id": "s08",
+      "x": 2752,
+      "y": 2030,
+      "w": 430,
+      "text": "08 · A PÁGINA — 1:15\n\nO ideal é abrir a página ao vivo e usar o slide só como apoio; se gravar com o slide, apontar para o mockup.\n\nOs três porquês que o brief cobra estão na coluna da direita: a URL (o diretório /ferramentas/ abre espaço para as próximas), o título (a keyword como é digitada) e a ordem (ferramenta em cima, conteúdo embaixo).\n\nDizer que é mockup de alta fidelidade antes que alguém pergunte."
+    },
+    {
+      "id": "s09",
+      "x": 4128,
+      "y": 2030,
+      "w": 430,
+      "text": "09 · SEO TÉCNICO E AEO — 1:00\n\nSe der para desligar o JavaScript ao vivo e recarregar, faça — vale mais que o slide inteiro.\n\nA ideia que sustenta a disputa na SERP: a página é documento indexável primeiro e aplicação depois. As três regras da esquerda explicam como.\n\nO detalhe que mostra rigor é o card verde: a fórmula existe uma vez só, então o exemplo publicado não pode divergir do que a ferramenta calcula."
+    },
+    {
+      "id": "s10",
+      "x": 5504,
+      "y": 2030,
+      "w": 430,
+      "text": "10 · FECHAMENTO — 0:40\n\nA lead bridge em uma frase: entregar a resposta, cobrar pelo aprofundamento. Os dois painéis fazem o trabalho — não narrar os dois.\n\nUm detalhe que vale citar em 5 segundos: enquanto bloqueado, os valores reais não entram no DOM. Não é blur de CSS.\n\nFechar apontando para o material escrito e agradecer. Não recapitular."
     }
   ],
   "launch": { "view": "canvas" }

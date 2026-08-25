@@ -5,9 +5,12 @@
   restringe a familia a produtos especificos.
 
   Proporcao da marca: branco 40% / preto 30% / roxo 15% / verde 10%. Por isso
-  os slides de conteudo sao brancos, os divisores de bloco sao roxos (3 em 21)
-  e o verde aparece so onde carrega peso: o painel de resultado e um destaque
-  por slide.
+  os slides de conteudo sao brancos, dois sao pretos (capa e fecho), um e roxo
+  (o slide de negocio) e o verde aparece so onde carrega peso: o painel de
+  resultado e um destaque por slide.
+
+  Preto sobre roxo-600 da 2,66:1 e nao pode ser texto. Sobre roxo, texto e
+  branco (7,05:1) e numero em destaque e verde-500 (5,84:1).
 */
 
 :root {

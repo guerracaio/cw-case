@@ -10,7 +10,7 @@ O repositório reúne duas camadas: a **análise** que justifica a escolha da fe
 
 | | |
 |---|---|
-| 📊 **Apresentação da análise** | _arquivo a incluir_ — como a ferramenta foi escolhida a partir dos dados |
+| 📊 **Apresentação da análise** | [canvas com os 10 slides](https://claude.ai/code/artifact/1764196d-22f3-4b42-ab3a-b35713f99047) — a base do vídeo, com o tempo e o roteiro de cada slide anotados ao lado · fonte em [deck/](deck/) |
 | 🗺️ **Análise e roadmap SEO + AEO** | [cw-case.vercel.app/case/analise-e-roadmap](https://cw-case.vercel.app/case/analise-e-roadmap/) — o método da análise, a escolha da ferramenta e as quatro fases dos primeiros 90 dias · [versão em Markdown](analise-e-roadmap-seo-aeo.md) |
 | 🧮 **Aplicação publicada** | [cw-case.vercel.app/ferramentas/calculadora-de-precos](https://cw-case.vercel.app/ferramentas/calculadora-de-precos/) |
 | 🎥 **Vídeo de apresentação** | _link a incluir_ — apresentação do resultado para a liderança de growth |

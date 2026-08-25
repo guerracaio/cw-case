@@ -1,0 +1,98 @@
+<div class="slide">
+  <p class="eyebrow">O dado · dataset do case</p>
+  <h1 class="title title--sm">As linhas que sustentam a decisão</h1>
+  <p class="lede" style="max-width: 1010px; font-size: 17px">Recorte de <span class="kbd">organic-keywords.csv</span> nas keywords de precificação. Colunas do próprio arquivo, sem edição — a agregação é reprodutível pelos scripts em <span class="kbd">generators/</span>.</p>
+
+  <div class="body" style="margin-top: 18px; justify-content: flex-start">
+    <table class="t" style="font-size: 13.5px">
+      <thead>
+        <tr>
+          <th>keyword</th>
+          <th class="num">volume</th>
+          <th class="num">keyword_difficulty</th>
+          <th>domain</th>
+          <th class="num">best_position</th>
+          <th>best_position_url</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color: #121212">precificacao</td>
+          <td class="num">14.800</td>
+          <td class="num">7</td>
+          <td>lojafacil.com.br</td>
+          <td class="num">3</td>
+          <td class="kbd" style="font-size: 12px">/blog/precificacao-o-que-e</td>
+        </tr>
+        <tr>
+          <td style="color: #121212">como precificar um produto</td>
+          <td class="num">4.100</td>
+          <td class="num">2</td>
+          <td>giroloja.com.br</td>
+          <td class="num">1</td>
+          <td class="kbd" style="font-size: 12px">/blog/como-precificar-um-produto</td>
+        </tr>
+        <tr>
+          <td style="color: #121212">precificacao de produtos</td>
+          <td class="num">3.900</td>
+          <td class="num">4</td>
+          <td>lojafacil.com.br</td>
+          <td class="num">2</td>
+          <td class="kbd" style="font-size: 12px">/blog/precificacao-de-produtos</td>
+        </tr>
+        <tr>
+          <td style="color: #121212">quanto cobrar por unha</td>
+          <td class="num">3.100</td>
+          <td class="num">8</td>
+          <td>contadorexpress.com.br</td>
+          <td class="num">2</td>
+          <td class="kbd" style="font-size: 12px">/blog/quanto-cobrar-por-unha</td>
+        </tr>
+        <tr>
+          <td style="color: #121212">quanto cobrar por um bolo</td>
+          <td class="num">2.400</td>
+          <td class="num">9</td>
+          <td>financasclaras.blog.br</td>
+          <td class="num">5</td>
+          <td class="kbd" style="font-size: 12px">/quanto-cobrar-por-um-bolo</td>
+        </tr>
+        <tr class="hi">
+          <td>calculadora de preco de venda</td>
+          <td class="num">210</td>
+          <td class="num">1</td>
+          <td>giroloja.com.br</td>
+          <td class="num">5</td>
+          <td class="kbd" style="font-size: 12px">/blog/como-calcular-preco-de-venda</td>
+        </tr>
+        <tr class="hi">
+          <td>como calcular preco de venda</td>
+          <td class="num">880</td>
+          <td class="num">6</td>
+          <td>infinitepay.io</td>
+          <td class="num">34</td>
+          <td class="kbd" style="font-size: 12px">/blog/como-calcular-preco-de-venda</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="grid-3" style="margin-top: 22px; gap: 26px">
+      <div>
+        <span class="tag tag--purple kbd">keyword_difficulty</span>
+        <p class="note" style="margin-top: 9px">Mediana <strong>6</strong> no cluster inteiro. 92,9% do volume está em KD até 10 — não é preciso autoridade acumulada para entrar.</p>
+      </div>
+      <div>
+        <span class="tag tag--purple kbd">best_position_url</span>
+        <p class="note" style="margin-top: 9px">Quase toda URL concorrente começa com <span class="kbd">/blog/</span>. Quem rankeia em quinto para <strong>“calculadora de preço de venda”</strong> é um artigo.</p>
+      </div>
+      <div>
+        <span class="tag tag--purple kbd">domain</span>
+        <p class="note" style="margin-top: 9px">A InfinitePay aparece <strong>uma vez em 21 keywords</strong>, na posição 34, com 2 visitas/mês. O resto do cluster está em aberto.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>21 keywords no escopo · 41.040 buscas/mês · 6 concorrentes · janela de 6 meses</span>
+    <span>02 / 10</span>
+  </div>
+</div>
