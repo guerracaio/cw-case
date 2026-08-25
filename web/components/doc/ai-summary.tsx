@@ -1,11 +1,6 @@
 import type { ReactNode } from "react";
 
-import {
-  ClaudeLogo,
-  GeminiLogo,
-  OpenAiLogo,
-  PerplexityLogo,
-} from "@/components/doc/ai-logos";
+import { ClaudeLogo, OpenAiLogo } from "@/components/doc/ai-logos";
 import { ROUTES, absoluteUrl } from "@/lib/seo/site";
 
 /**
@@ -30,6 +25,10 @@ const QUERY = encodeURIComponent(PROMPT);
 
 const ASSISTANTS: Array<{ name: string; href: string; logo: ReactNode }> = [
   {
+    /*
+      So dois. O Gemini e o Perplexity sairam: quatro atalhos ocupavam metade
+      da coluna lateral com uma escolha que ninguem pediu para fazer.
+    */
     name: "Claude",
     href: `https://claude.ai/new?q=${QUERY}`,
     logo: <ClaudeLogo />,
@@ -38,29 +37,6 @@ const ASSISTANTS: Array<{ name: string; href: string; logo: ReactNode }> = [
     name: "ChatGPT",
     href: `https://chat.openai.com/?q=${QUERY}`,
     logo: <OpenAiLogo />,
-  },
-  {
-    /*
-      O Gemini nao entra pelo gemini.google.com/app: aquele endereco nao
-      documenta parametro de prompt e costuma abrir a conversa em branco.
-      O caminho que funciona e o AI Mode da busca, que roda em Gemini e
-      aceita a pergunta na propria URL — `udm=50` e o que troca a SERP
-      classica pelo modo de IA. E o mesmo caminho que a InfinitePay usa
-      hoje nas proprias paginas.
-
-      A URL de referencia trazia tambem `mstk` e `csuir`, que sao tokens de
-      sessao de quem gerou o link, e `aep`, que identifica a superficie de
-      entrada. Nada disso vale colado aqui: token de sessao alheia nao
-      transfere, e o resto e ruido.
-    */
-    name: "Gemini",
-    href: `https://www.google.com/search?udm=50&q=${QUERY}`,
-    logo: <GeminiLogo />,
-  },
-  {
-    name: "Perplexity",
-    href: `https://www.perplexity.ai/search?q=${QUERY}`,
-    logo: <PerplexityLogo />,
   },
 ];
 
