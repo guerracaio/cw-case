@@ -15,8 +15,6 @@ Thumbs.db
 # arquivos de lock do LibreOffice
 .~lock.*#
 
-# Saidas geradas do deck. Reproduziveis com `node deck/build.mjs` a partir de
-# deck/slides/ e deck/assets/, que sao versionados. O canvas montado passa de
-# 3 MB por embutir a fonte em cada artboard.
-deck/build/
-deck/apresentacao-case-cloudwalk.html
+# O deck fica so na maquina local. Nao e entregavel do repositorio: a
+# apresentacao e entregue como canvas publicado, e o link esta no README.
+deck/
