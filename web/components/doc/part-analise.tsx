@@ -1,9 +1,9 @@
 /** Parte 1 do documento do case: a análise. */
 
+import { GeminiLogo, OpenAiLogo } from "./ai-logos";
 import {
   Callout,
   Code,
-  CodeIcon,
   H3,
   H4,
   HI_ROW,
@@ -11,7 +11,6 @@ import {
   Note,
   PartHeading,
   Question,
-  ResearchIcon,
   Role,
   Stat,
   Stats,
@@ -197,7 +196,7 @@ export function PartAnalise() {
         com papéis diferentes.
       </p>
 
-      <Role icon={<CodeIcon />}>
+      <Role icon={<OpenAiLogo className="size-6" />}>
         <p>
           <strong>Codex — pipeline de dados.</strong> Usado para agrupar,
           filtrar, ordenar, refinar e sumarizar o dataset, com o objetivo de
@@ -216,7 +215,7 @@ export function PartAnalise() {
         </p>
       </Role>
 
-      <Role icon={<ResearchIcon />}>
+      <Role icon={<GeminiLogo className="size-6" />}>
         <p>
           <strong>Gemini — pesquisa de ICP.</strong> O dataset traz apenas dados
           quantitativos de SEO; não traz nada sobre quem é o público nem sobre

@@ -166,8 +166,19 @@ export const HI_ROW =
   "[&>td]:bg-green-100 [&>td]:font-medium [&>td]:text-neutral-900 [&>td:first-child]:shadow-[inset_3px_0_0_var(--color-green-500)]";
 
 /**
- * Bloco com icone. Os icones sao desenhos proprios que representam a funcao
- * da ferramenta — codigo, pesquisa —, nunca a marca dela.
+ * Bloco com icone. Aqui o icone e a marca do proprio assistente: a secao fala
+ * de duas ferramentas nomeadas, e o simbolo delas identifica mais rapido do
+ * que um desenho generico de "codigo" ou "pesquisa", que era o que estava
+ * aqui antes.
+ *
+ * Em monocromia no preto do texto, e nao na cor de marca de cada um nem no
+ * roxo da InfinitePay: as cores oficiais estao fora da paleta daqui, e pintar
+ * marca alheia de roxo seria recolorir. Uma cor so e o uso que os proprios
+ * guias costumam permitir sem aprovacao — e o preto e como a OpenAI publica
+ * o arquivo.
+ *
+ * O `span` e `aria-hidden` porque o nome do assistente ja abre o paragrafo ao
+ * lado: anunciar a marca de novo seria repeticao para quem usa leitor de tela.
  *
  * No celular o icone sobe: manter o recuo custaria largura de leitura.
  */
@@ -176,7 +187,7 @@ export function Role({ icon, children }: { icon: ReactNode; children: ReactNode 
     <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-5">
       <span
         aria-hidden="true"
-        className="grid size-11 shrink-0 place-items-center rounded-xl bg-neutral-200 text-purple-600 sm:mt-1"
+        className="grid size-11 shrink-0 place-items-center rounded-xl bg-neutral-200 text-neutral-900 sm:mt-1"
       >
         {icon}
       </span>
@@ -185,35 +196,3 @@ export function Role({ icon, children }: { icon: ReactNode; children: ReactNode 
   );
 }
 
-const ICON_PROPS = {
-  viewBox: "0 0 24 24",
-  fill: "none",
-  stroke: "currentColor",
-  strokeWidth: 1.75,
-  strokeLinecap: "round" as const,
-  strokeLinejoin: "round" as const,
-  className: "size-6",
-};
-
-/** Codigo: o papel do assistente foi produzir os scripts. */
-export function CodeIcon() {
-  return (
-    <svg {...ICON_PROPS}>
-      <path d="M8.5 6.5 3.5 12l5 5.5" />
-      <path d="m15.5 6.5 5 5.5-5 5.5" />
-      <path d="M13.4 4.2 10.6 19.8" />
-    </svg>
-  );
-}
-
-/** Lupa sobre linhas de texto: o papel foi a pesquisa. */
-export function ResearchIcon() {
-  return (
-    <svg {...ICON_PROPS}>
-      <circle cx="10.5" cy="10.5" r="6.5" />
-      <path d="m15.4 15.4 5.1 5.1" />
-      <path d="M8 11.5h5" />
-      <path d="M8 8.5h3" />
-    </svg>
-  );
-}
