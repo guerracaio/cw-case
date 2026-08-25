@@ -176,16 +176,67 @@ export const FUNIL: ReadonlyArray<{
   { label: "Escolhida", value: "41.040", width: "28%" },
 ];
 
-/** As quatro fases, com a janela de dias e o objetivo. */
-export const FASES: ReadonlyArray<{
+/** As ações da Fase 1, na ordem do roadmap. */
+export const FASE_1: readonly string[] = [
+  "Definir a arquitetura de páginas satélite focadas em precificação de produtos.",
+  "Publicar a ferramenta.",
+  "Criar as primeiras páginas prioritárias por intenção e keyword.",
+  "Otimizar titles, headings, links internos e schema.",
+  "Modelar o conteúdo para estrutura AEO — respostas diretas, entidades e FAQs.",
+  "Criar os links entre as páginas satélite e a ferramenta.",
+  "Configurar GA4, GSC e os eventos de conversão.",
+];
+
+/** As ações da Fase 2. */
+export const FASE_2: readonly string[] = [
+  "Priorizar os gaps de cobertura remanescentes.",
+  "Publicar a segunda leva de satélites — serviços e casos por profissão.",
+  "Manter a estrutura de conteúdo AEO da Parte 2.",
+  "Iniciar distribuição e prospecção de backlinks e menções.",
+];
+
+/**
+ * O roadmap inteiro numa estrutura só: janela, objetivo e o que fazer.
+ *
+ * As Fases 3 e 4 derivam os bullets do título de cada ação já declarada acima
+ * — o documento mostra o detalhe, a apresentação mostra só o rótulo, e as
+ * duas leem da mesma lista.
+ */
+export const ROADMAP: ReadonlyArray<{
   janela: string;
   nome: string;
   objetivo: string;
+  acoes: readonly string[];
+  paralelo: boolean;
 }> = [
-  { janela: "Dias 1 a 30", nome: "Fase 1", objetivo: "Construir os ativos de aquisição e a ferramenta" },
-  { janela: "Dias 31 a 60", nome: "Fase 2", objetivo: "Expandir cobertura SEO + AEO" },
-  { janela: "Dias 61 a 90", nome: "Fase 3", objetivo: "Ganhar autoridade e otimizar vencedores" },
-  { janela: "Dias 61 a 90 · em paralelo", nome: "Fase 4", objetivo: "Focar em CRO" },
+  {
+    janela: "Dias 1 a 30",
+    nome: "Fase 1",
+    objetivo: "Construir os ativos de aquisição e a ferramenta",
+    acoes: FASE_1,
+    paralelo: false,
+  },
+  {
+    janela: "Dias 31 a 60",
+    nome: "Fase 2",
+    objetivo: "Expandir cobertura SEO + AEO",
+    acoes: FASE_2,
+    paralelo: false,
+  },
+  {
+    janela: "Dias 61 a 90",
+    nome: "Fase 3",
+    objetivo: "Ganhar autoridade e otimizar vencedores",
+    acoes: FASE_3.map(([titulo]) => titulo),
+    paralelo: false,
+  },
+  {
+    janela: "Dias 61 a 90",
+    nome: "Fase 4",
+    objetivo: "Focar em CRO",
+    acoes: FASE_4.map(([titulo]) => titulo),
+    paralelo: true,
+  },
 ];
 
 /**

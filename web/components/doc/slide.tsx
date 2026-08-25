@@ -19,7 +19,7 @@ import type { ReactNode } from "react";
  */
 
 /** Quantos slides existem — usado no contador de cada rodapé. */
-export const TOTAL_SLIDES = 13;
+export const TOTAL_SLIDES = 10;
 
 export function Slide({
   n,

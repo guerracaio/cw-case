@@ -20,13 +20,9 @@ import {
   EVENTOS,
   FASE_1_PAGINAS,
   FASE_2_PAGINAS,
-  FASES,
   FONTES,
-  FUNIL,
-  LIMITACOES,
   NUMEROS,
-  RANKING,
-  SUBGRUPOS,
+  ROADMAP,
 } from "@/content/case/analise-e-roadmap";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { ROUTES } from "@/lib/seo/site";
@@ -34,6 +30,11 @@ import { ROUTES } from "@/lib/seo/site";
 /*
   Modo Apresentação do documento — a mesma análise reduzida a números, tabelas
   e entidades visuais, um assunto por tela.
+
+  A ordem segue o roteiro da gravação, não a do documento: capa e decisão
+  primeiro, depois o dataset, as etapas, os números, o padrão, o roadmap, a
+  arquitetura e por fim a ferramenta. Quem apresenta abre com a conclusão; quem
+  lê o documento chega nela pelo caminho.
 
   Canonical apontando para o documento, e não para si mesma. As duas URLs
   carregam o mesmo conteúdo em dois formatos; o canonical consolida o sinal na
@@ -54,6 +55,15 @@ export const metadata: Metadata = {
   alternates: { canonical: ROUTES.caseDoc },
 };
 
+/** Rótulo de seção dentro de um slide. */
+function Label({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="text-[11px] font-medium tracking-[0.14em] text-neutral-800 uppercase">
+      {children}
+    </p>
+  );
+}
+
 export default function ApresentacaoPage() {
   return (
     /*
@@ -65,34 +75,60 @@ export default function ApresentacaoPage() {
       layout: mudá-la afetaria todas as outras páginas.
     */
     <main className="fixed inset-0 z-50 h-[100svh] snap-y snap-mandatory overflow-y-auto overscroll-contain bg-white">
-      {/* ---------------------------- 01 · capa ---------------------------- */}
+      {/* ------------------------ 01 · capa e decisão ------------------------ */}
       <Slide
         n={1}
         tone="dark"
         eyebrow="Case técnico · Technical SEO &amp; AI Growth Builder"
-        title="Análise e roadmap SEO + AEO"
-        lede="Calculadora de preços de produtos e serviços. Onde está a oportunidade orgânica, por que esta ferramenta e o que fazer nos primeiros 90 dias."
+        title="Calculadora de preços de produtos e serviços"
+        lede="A ferramenta escolhida, os dados que levaram até ela e o plano dos primeiros 90 dias."
       >
-        <div className="grid grid-cols-2 gap-3 sm:max-w-2xl sm:gap-4">
-          <div className="rounded-2xl bg-green-500 px-5 py-4 text-neutral-900 sm:px-6 sm:py-5">
-            <p className="text-4xl font-bold tracking-tight tabular-nums sm:text-5xl">
+        <div className="grid grid-cols-2 gap-3 sm:max-w-3xl sm:gap-4 lg:grid-cols-4">
+          <div className="rounded-2xl bg-green-500 px-5 py-4 text-neutral-900">
+            <p className="text-3xl font-bold tracking-tight tabular-nums sm:text-4xl">
               41.040
             </p>
             <p className="mt-2 text-xs opacity-80 sm:text-sm">
               buscas/mês no escopo
             </p>
           </div>
-          <div className="rounded-2xl bg-white/10 px-5 py-4 sm:px-6 sm:py-5">
-            <p className="text-4xl font-bold tracking-tight tabular-nums sm:text-5xl">
+          <div className="rounded-2xl bg-white/10 px-5 py-4">
+            <p className="text-3xl font-bold tracking-tight tabular-nums sm:text-4xl">
               97,9%
             </p>
             <p className="mt-2 text-xs opacity-70 sm:text-sm">
               sem ranking da InfinitePay
             </p>
           </div>
+          <div className="rounded-2xl bg-white/10 px-5 py-4">
+            <p className="text-3xl font-bold tracking-tight tabular-nums sm:text-4xl">
+              100%
+            </p>
+            <p className="mt-2 text-xs opacity-70 sm:text-sm">
+              de gap funcional — nenhuma calculadora na SERP
+            </p>
+          </div>
+          <div className="rounded-2xl bg-white/10 px-5 py-4">
+            <p className="text-3xl font-bold tracking-tight tabular-nums sm:text-4xl">
+              6,0
+            </p>
+            <p className="mt-2 text-xs opacity-70 sm:text-sm">
+              de KD mediano — barreira baixa
+            </p>
+          </div>
         </div>
 
-        <p className="mt-6 text-xs text-white/60 sm:text-sm">
+        <p className="mt-6 max-w-3xl text-sm text-white/80">
+          Uma página que é <strong className="text-white">ferramenta</strong> e{" "}
+          <strong className="text-white">documento indexável</strong> ao mesmo
+          tempo, em{" "}
+          <span className="font-mono text-green-500">
+            /ferramentas/calculadora-de-precos/
+          </span>
+          .
+        </p>
+
+        <p className="mt-6 text-xs text-white/60">
           {TOTAL_SLIDES} telas · role, ou use PageDown e as setas do rodapé ·{" "}
           <Link href={ROUTES.caseDoc} className="text-green-500 hover:underline">
             ler o documento completo
@@ -100,169 +136,113 @@ export default function ApresentacaoPage() {
         </p>
       </Slide>
 
-      {/* ------------------------ 02 · os números ------------------------ */}
+      {/* -------------------- 02 · o dataset e o pipeline -------------------- */}
       <Slide
         n={2}
-        eyebrow="Sumário executivo"
-        title="Os oito números que sustentam a decisão"
+        eyebrow="A fonte"
+        title="Três CSVs intocados, e uma agregação que se regenera"
+        lede="Os arquivos estão no repositório exatamente como recebidos. A janela é de 6 meses: um recorte temporal, não a série histórica."
       >
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-          {NUMEROS.map((n, i) => (
-            <Big
-              key={n.value + n.label}
-              value={n.value}
-              label={n.label}
-              tone={i === 0 ? "green" : "light"}
-            />
-          ))}
-        </div>
-      </Slide>
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
+          <div>
+            <SlideTable>
+              <thead>
+                <tr>
+                  <th className={STH}>arquivo em dataset/</th>
+                  <th className={`${STH} ${SNUM}`}>linhas</th>
+                  <th className={STH}>o que traz</th>
+                </tr>
+              </thead>
+              <tbody>
+                {FONTES.map(([arquivo, linhas, traz]) => (
+                  <tr key={arquivo}>
+                    <td className={`${STD} font-mono text-neutral-900`}>
+                      {arquivo}
+                    </td>
+                    <td className={`${STD} ${SNUM}`}>{linhas}</td>
+                    <td className={STD}>{traz}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </SlideTable>
 
-      {/* -------------------------- 03 · a fonte -------------------------- */}
-      <Slide
-        n={3}
-        eyebrow="1.1 · Fonte de dados"
-        title="Três arquivos, versionados exatamente como recebidos"
-        lede="A janela é de 6 meses: um recorte temporal, não a série histórica. Isso condiciona tudo o que vem depois."
-      >
-        <SlideTable>
-          <thead>
-            <tr>
-              <th className={STH}>arquivo em dataset/</th>
-              <th className={`${STH} ${SNUM}`}>linhas</th>
-              <th className={STH}>o que traz</th>
-            </tr>
-          </thead>
-          <tbody>
-            {FONTES.map(([arquivo, linhas, traz]) => (
-              <tr key={arquivo}>
-                <td className={`${STD} font-mono text-neutral-900`}>
-                  {arquivo}
-                </td>
-                <td className={`${STD} ${SNUM}`}>{linhas}</td>
-                <td className={STD}>{traz}</td>
-              </tr>
-            ))}
-          </tbody>
-        </SlideTable>
+            <div className="mt-5 grid grid-cols-2 gap-3 lg:grid-cols-4">
+              {DOMINIO_ALVO.map(([valor, rotulo]) => (
+                <Big key={rotulo} value={valor} label={rotulo} tone="outline" />
+              ))}
+            </div>
+          </div>
 
-        <p className="mt-8 text-[11px] font-medium tracking-[0.14em] text-neutral-800 uppercase sm:text-xs">
-          O domínio-alvo
-        </p>
-        <div className="mt-3 grid grid-cols-2 gap-3 lg:grid-cols-4">
-          {DOMINIO_ALVO.map(([valor, rotulo]) => (
-            <Big key={rotulo} value={valor} label={rotulo} tone="outline" />
-          ))}
-        </div>
-      </Slide>
-
-      {/* --------------------- 04 · divisão de trabalho --------------------- */}
-      <Slide
-        n={4}
-        eyebrow="1.2 · Ferramentas e divisão de trabalho"
-        title="Dados intocados, agregação reprodutível, julgamento declarado"
-      >
-        <div className="grid gap-4 lg:grid-cols-3">
-          <div className="rounded-2xl bg-neutral-200 p-5">
+          <div className="rounded-2xl bg-neutral-200 p-5 sm:p-6">
             <span
               aria-hidden="true"
               className="grid size-10 place-items-center rounded-xl bg-white text-neutral-900"
             >
               <OpenAiLogo className="size-5" />
             </span>
-            <h3 className="mt-4 text-base font-bold">Codex · pipeline</h3>
+
+            <h3 className="mt-4 text-base font-bold sm:text-lg">
+              Codex como pipeline de dados
+            </h3>
+
             <p className="mt-2 text-xs text-neutral-800 sm:text-sm">
-              Produziu os <strong>scripts Python</strong> em{" "}
-              <span className="font-mono">generators/</span>, que leem os CSVs e
-              escrevem os relatórios.{" "}
-              <strong>Nenhum dado de entrada foi alterado.</strong>
+              Usado para <strong>agrupar, filtrar, ordenar e sumarizar</strong> o
+              dataset — encurtar o tempo entre a pergunta e o número que a
+              responde.
             </p>
-          </div>
 
-          <div className="rounded-2xl bg-neutral-200 p-5">
-            <span
-              aria-hidden="true"
-              className="grid size-10 place-items-center rounded-xl bg-white text-neutral-900"
-            >
-              <GeminiLogo className="size-5" />
-            </span>
-            <h3 className="mt-4 text-base font-bold">Gemini · ICP</h3>
-            <p className="mt-2 text-xs text-neutral-800 sm:text-sm">
-              O dataset não traz nada sobre público nem negócio. Um{" "}
-              <em>deep research</em> sobre PMEs no Brasil virou a régua das
-              notas de business fit.
+            <div className="mt-4 flex flex-wrap items-center gap-2 text-[11px] font-medium sm:text-xs">
+              <span className="rounded-full bg-white px-3 py-1 font-mono">
+                dataset/*.csv
+              </span>
+              <span aria-hidden="true" className="text-purple-600">
+                →
+              </span>
+              <span className="rounded-full bg-white px-3 py-1 font-mono">
+                generators/*.py
+              </span>
+              <span aria-hidden="true" className="text-purple-600">
+                →
+              </span>
+              <span className="rounded-full bg-green-500 px-3 py-1 font-mono text-neutral-900">
+                outputs/*.md
+              </span>
+            </div>
+
+            <p className="mt-4 text-xs text-neutral-800 sm:text-sm">
+              O que ele produziu foram os <strong>scripts Python</strong>, não os
+              números. Cada relatório em Markdown é regenerável a partir dos
+              CSVs — <strong>nenhum dado de entrada foi alterado</strong>.
             </p>
-          </div>
 
-          <div className="rounded-2xl bg-purple-600 p-5 text-white">
-            <span
-              aria-hidden="true"
-              className="grid size-10 place-items-center rounded-xl bg-white/15 text-sm font-bold"
-            >
-              eu
-            </span>
-            <h3 className="mt-4 text-base font-bold">O que continuou humano</h3>
-            <p className="mt-2 text-xs text-white/80 sm:text-sm">
-              Os cortes de escopo, o agrupamento dos clusters, a leitura da
-              SERP, as notas de utility fit, business fit e esforço, e a decisão
-              final.
+            <p className="mt-3 text-xs text-neutral-800 sm:text-sm">
+              A separação é deliberada: o relatório é artefato determinístico,
+              não um resumo que a IA escreveu de memória. Se a agregação
+              estiver errada, o erro está no script — e é inspecionável.
             </p>
-          </div>
-        </div>
 
-        <div className="mt-4 rounded-2xl bg-green-500 px-5 py-4 text-neutral-900">
-          <p className="text-xs leading-relaxed sm:text-sm">
-            O relatório é um artefato <strong>determinístico e regenerável</strong>
-            , não um resumo que a IA escreveu de memória. Se a agregação
-            estiver errada, o erro está no script — e é inspecionável.
-          </p>
-        </div>
-      </Slide>
-
-      {/* --------------------------- 05 · o funil --------------------------- */}
-      <Slide
-        n={5}
-        eyebrow="1.3 · As seis etapas"
-        title="De 1,5 milhão de buscas a uma ferramenta"
-      >
-        <div className="flex flex-col gap-2">
-          {FUNIL.map((f, i) => {
-            const last = i === FUNIL.length - 1;
-            return (
-              <div
-                key={f.label}
-                style={{ width: f.width }}
-                className={`flex min-w-fit items-baseline justify-between gap-4 rounded-lg px-4 py-2.5 sm:px-5 sm:py-3 ${
-                  last ? "bg-green-500" : "bg-neutral-200"
-                }`}
+            <div className="mt-4 flex items-center gap-3 border-t border-neutral-400 pt-4">
+              <span
+                aria-hidden="true"
+                className="grid size-8 shrink-0 place-items-center rounded-lg bg-white text-neutral-900"
               >
-                <span
-                  className={`text-xs sm:text-sm ${last ? "font-bold" : "font-medium"}`}
-                >
-                  {f.label}
-                </span>
-                <span className="text-sm font-bold tabular-nums sm:text-base">
-                  {f.value}
-                </span>
-              </div>
-            );
-          })}
+                <GeminiLogo className="size-4" />
+              </span>
+              <p className="text-xs text-neutral-800">
+                O Gemini entrou só onde o dataset é mudo: um{" "}
+                <em>deep research</em> sobre PMEs no Brasil virou o ICP usado
+                para as notas de business fit.
+              </p>
+            </div>
+          </div>
         </div>
-
-        <p className="mt-6 max-w-3xl text-xs text-neutral-800 sm:text-sm">
-          <strong>O achado que mudou o critério está na etapa 2.</strong>{" "}
-          Precificação marca só 3% de sinal explícito de utilidade — quase
-          ninguém digita &ldquo;calculadora&rdquo; — e ainda assim é nota 5,
-          porque &ldquo;quanto cobrar por um bolo&rdquo; é uma tarefa de cálculo
-          escrita em linguagem natural.
-        </p>
       </Slide>
 
-      {/* --------------------------- 06 · etapas --------------------------- */}
+      {/* --------------------------- 03 · as etapas --------------------------- */}
       <Slide
-        n={6}
-        eyebrow="1.3 · As seis etapas"
-        title="Cada etapa é uma pergunta, e a resposta abre a seguinte"
+        n={3}
+        eyebrow="O método"
+        title="Seis etapas — cada uma é uma pergunta, e a resposta abre a seguinte"
       >
         <SlideTable>
           <thead>
@@ -284,162 +264,85 @@ export default function ApresentacaoPage() {
             ))}
           </tbody>
         </SlideTable>
-      </Slide>
 
-      {/* -------------------------- 07 · o ranking -------------------------- */}
-      <Slide
-        n={7}
-        eyebrow="1.4 · A decisão"
-        title="Sete hipóteses de ferramenta, uma escolhida"
-        lede="Opportunity = Demand × Gap SEO × Utility Fit × Business Fit ÷ Effort. Demand e Gap saem do dataset; as outras três são julgamento declarado."
-      >
-        <SlideTable>
-          <thead>
-            <tr>
-              <th className={`${STH} w-8`}>#</th>
-              <th className={STH}>Hipótese</th>
-              <th className={`${STH} ${SNUM}`}>Volume</th>
-              <th className={`${STH} ${SNUM}`}>Gap</th>
-              <th className={`${STH} ${SNUM}`}>Util.</th>
-              <th className={`${STH} ${SNUM}`}>Neg.</th>
-              <th className={`${STH} ${SNUM}`}>Esf.</th>
-              <th className={`${STH} ${SNUM}`}>Score</th>
-            </tr>
-          </thead>
-          <tbody>
-            {RANKING.map(
-              ([n, nome, vol, gap, util, neg, esf, score, escolhida]) => (
-                <tr key={n} className={escolhida ? SHI : undefined}>
-                  <td className={STD}>{n}</td>
-                  <td className={`${STD} text-neutral-900`}>{nome}</td>
-                  <td className={`${STD} ${SNUM}`}>{vol}</td>
-                  <td className={`${STD} ${SNUM}`}>{gap}</td>
-                  <td className={`${STD} ${SNUM}`}>{util}</td>
-                  <td className={`${STD} ${SNUM}`}>{neg}</td>
-                  <td className={`${STD} ${SNUM}`}>{esf}</td>
-                  <td className={`${STD} ${SNUM}`}>{score}</td>
-                </tr>
-              ),
-            )}
-          </tbody>
-        </SlideTable>
-
-        <p className="mt-5 max-w-3xl text-xs text-neutral-800 sm:text-sm">
-          <strong>As duas derrotas explicam melhor que a vitória.</strong> O
-          comparador de maquininhas tem o dobro do volume e a melhor nota de
-          negócio, e perde por gap: 60% já rankeia. O gerador de QR Code empata
-          em volume, mas 45% já é da casa.
+        <p className="mt-5 max-w-4xl text-xs text-neutral-800 sm:text-sm">
+          <strong>O achado que mudou o critério está na etapa 2.</strong>{" "}
+          Precificação marca só 3% de sinal explícito de utilidade — quase
+          ninguém digita &ldquo;calculadora&rdquo; — e ainda assim é nota 5,
+          porque &ldquo;quanto cobrar por um bolo&rdquo; é uma tarefa de cálculo
+          escrita em linguagem natural. Priorizar pela palavra usada na busca
+          teria descartado o cluster vencedor.
         </p>
       </Slide>
 
-      {/* ------------------------ 08 · decomposição ------------------------ */}
+      {/* --------------------- 04 · os números da decisão --------------------- */}
       <Slide
-        n={8}
-        eyebrow="1.4 · A decisão"
-        title="A decomposição da demanda desenhou a arquitetura de páginas"
+        n={4}
+        eyebrow="A evidência"
+        title="Os números que sustentaram a escolha"
       >
-        <SlideTable>
-          <thead>
-            <tr>
-              <th className={STH}>Subgrupo do escopo</th>
-              <th className={`${STH} ${SNUM}`}>Keywords</th>
-              <th className={`${STH} ${SNUM}`}>Volume</th>
-              <th className={`${STH} ${SNUM}`}>Participação</th>
-              <th className={`${STH} ${SNUM}`}>KD pond.</th>
-              <th className={`${STH} ${SNUM}`}>Gap SEO</th>
-              <th className={STH}>Atacado na</th>
-            </tr>
-          </thead>
-          <tbody>
-            {SUBGRUPOS.map(([nome, kws, vol, part, kd, gap, fase]) => (
-              <tr key={nome}>
-                <td className={`${STD} text-neutral-900`}>{nome}</td>
-                <td className={`${STD} ${SNUM}`}>{kws}</td>
-                <td className={`${STD} ${SNUM}`}>{vol}</td>
-                <td className={`${STD} ${SNUM}`}>{part}</td>
-                <td className={`${STD} ${SNUM}`}>{kd}</td>
-                <td className={`${STD} ${SNUM}`}>{gap}</td>
-                <td className={STD}>{fase}</td>
-              </tr>
-            ))}
-          </tbody>
-        </SlideTable>
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+          {NUMEROS.map((n, i) => (
+            <Big
+              key={n.value + n.label}
+              value={n.value}
+              label={n.label}
+              tone={i === 0 ? "green" : "light"}
+            />
+          ))}
+        </div>
 
-        <div className="mt-6 grid gap-3 sm:grid-cols-3">
-          <Big value="97,9%" label="de gap SEO ponderado por volume" tone="green" />
-          <Big value="1 em 32" label="páginas concorrentes é ferramenta" tone="outline" />
-          <Big value="pos. 34" label="é a única presença atual da InfinitePay" tone="outline" />
+        <div className="mt-6 grid gap-4 lg:grid-cols-2">
+          <p className="text-xs text-neutral-800 sm:text-sm">
+            <strong>O escopo.</strong> 21 keywords, 41.040 buscas/mês. A
+            cobertura atual da InfinitePay é uma keyword, na posição 34, e é um
+            artigo — não uma ferramenta. Uma única ferramenta explícita aparece
+            em 32 páginas concorrentes relevantes.
+          </p>
+          <p className="text-xs text-neutral-800 sm:text-sm">
+            <strong>A posição de largada.</strong> DR 68 contra 51,5 de mediana
+            no grupo, com as páginas ocupantes em UR mediano 11. A demanda não
+            está protegida por autoridade: o custo de entrada é essencialmente o
+            custo de publicar bem.
+          </p>
         </div>
       </Slide>
 
-      {/* ------------------------- 09 · limitações ------------------------- */}
+      {/* ---------------------- 05 · o padrão e a medição ---------------------- */}
       <Slide
-        n={9}
-        eyebrow="1.5 · Limitações e vieses"
-        title="O que o dataset não permite afirmar"
-        lede="Registradas porque mudam o peso da conclusão, não como ressalva protocolar."
-      >
-        <SlideTable>
-          <thead>
-            <tr>
-              <th className={`${STH} w-1/3`}>O que identifiquei</th>
-              <th className={STH}>Como lidei</th>
-            </tr>
-          </thead>
-          <tbody>
-            {LIMITACOES.map((l) => (
-              <tr key={l.o_que} className={l.principal ? SHI : undefined}>
-                <td className={`${STD} text-neutral-900`}>{l.o_que}</td>
-                <td className={STD}>{l.como}</td>
-              </tr>
-            ))}
-          </tbody>
-        </SlideTable>
-      </Slide>
-
-      {/* --------------------- 10 · padrão de publicação --------------------- */}
-      <Slide
-        n={10}
+        n={5}
         eyebrow="Parte 2 · O padrão de publicação"
         title="A definição de pronto — para as onze satélites e para a ferramenta"
         lede="Não é tarefa de uma fase: vale em todas. Sem isso, cada fase reinventa o próprio critério de qualidade."
       >
-        <div className="grid gap-6 lg:grid-cols-3">
-          <div>
-            <p className="text-[11px] font-medium tracking-[0.14em] text-neutral-800 uppercase">
-              2.1 · Checklist SEO
-            </p>
-            <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-neutral-800 lg:grid-cols-1 lg:gap-y-1">
+        <div className="grid gap-4 lg:grid-cols-3">
+          <div className="flex flex-col rounded-2xl bg-neutral-200 p-5 sm:p-6">
+            <Label>2.1 · Checklist SEO</Label>
+            <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-neutral-800 sm:text-sm lg:grid-cols-1 lg:gap-y-1">
               {CHECKLIST_SEO.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
           </div>
 
-          <div>
-            <p className="text-[11px] font-medium tracking-[0.14em] text-neutral-800 uppercase">
-              2.2 · Checklist AEO
-            </p>
-            <ul className="mt-3 flex flex-col gap-1.5 text-xs text-neutral-800">
+          <div className="flex flex-col rounded-2xl bg-neutral-200 p-5 sm:p-6">
+            <Label>2.2 · Checklist AEO</Label>
+            <ul className="mt-4 flex flex-col gap-1.5 text-xs text-neutral-800 sm:text-sm">
               {CHECKLIST_AEO.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
           </div>
 
-          <div>
-            <p className="text-[11px] font-medium tracking-[0.14em] text-neutral-800 uppercase">
+          <div className="flex flex-col rounded-2xl bg-green-500 p-5 text-neutral-900 sm:p-6">
+            <p className="text-[11px] font-medium tracking-[0.14em] uppercase opacity-70">
               2.3 · O que medir desde o início
             </p>
-            <ul className="mt-3 flex flex-col gap-1.5">
-              {EVENTOS.map(([evento, quando], i) => (
+            <ul className="mt-4 flex flex-col gap-1.5">
+              {EVENTOS.map(([evento, quando]) => (
                 <li
                   key={evento}
-                  className={`flex items-center justify-between gap-3 rounded-lg px-3 py-1.5 text-xs ${
-                    i === EVENTOS.length - 2
-                      ? "bg-green-500 text-neutral-900"
-                      : "bg-neutral-200 text-neutral-800"
-                  }`}
+                  className="flex items-center justify-between gap-3 rounded-lg bg-white/70 px-3 py-1.5 text-xs"
                 >
                   <span>{quando}</span>
                   <span className="font-mono text-[10px] whitespace-nowrap">
@@ -448,130 +351,370 @@ export default function ApresentacaoPage() {
                 </li>
               ))}
             </ul>
+            <p className="mt-4 text-xs">
+              <strong>Os eventos entram na Fase 1, não na Fase 4.</strong>{" "}
+              Otimizar um funil que ninguém instrumentou é adivinhar.
+            </p>
           </div>
         </div>
       </Slide>
 
-      {/* --------------------------- 11 · as fases --------------------------- */}
+      {/* ---------------------------- 06 · o roadmap ---------------------------- */}
       <Slide
-        n={11}
-        eyebrow="3.1 · Visão geral do roadmap"
+        n={6}
+        eyebrow="Parte 3 · Os 90 dias"
         title="Aquisição primeiro, conversão depois"
         lede="Sem tráfego não há o que otimizar, e sem dado de tração a priorização vira palpite. As Fases 3 e 4 correm juntas porque atacam pontas opostas do mesmo funil."
-      >
-        <div className="grid gap-3 lg:grid-cols-4">
-          {FASES.map((f, i) => (
-            <div
-              key={f.nome}
-              className={`flex flex-col rounded-2xl p-5 ${
-                i === 3 ? "bg-green-500 text-neutral-900" : "bg-neutral-200"
-              }`}
-            >
-              <span
-                className={`inline-flex w-fit rounded-full px-3 py-1 text-[10px] font-medium ${
-                  i === 3 ? "bg-neutral-900 text-white" : "bg-white"
-                }`}
-              >
-                {f.janela}
-              </span>
-              <h3 className="mt-3 text-base font-bold">{f.nome}</h3>
-              <p className="mt-1 text-xs sm:text-sm">{f.objetivo}</p>
-            </div>
-          ))}
-        </div>
-      </Slide>
-
-      {/* ---------------------------- 12 · fase 1 ---------------------------- */}
-      <Slide
-        n={12}
-        eyebrow="3.2 e 3.3 · A arquitetura publicada"
-        title="Onze satélites e a ferramenta, por intenção e keyword"
       >
         <SlideTable>
           <thead>
             <tr>
-              <th className={`${STH} w-8`}>#</th>
-              <th className={STH}>URL</th>
-              <th className={`${STH} ${SNUM}`}>Volume</th>
-              <th className={STH}>Formato</th>
-              <th className={STH}>Fase</th>
+              <th className={`${STH} w-32`}>Janela</th>
+              <th className={`${STH} w-56`}>Fase e objetivo</th>
+              <th className={STH}>O que fazer</th>
             </tr>
           </thead>
           <tbody>
-            {FASE_1_PAGINAS.map(([n, url, , vol, formato, ferramenta]) => (
-              <tr key={url} className={ferramenta ? SHI : undefined}>
-                <td className={STD}>{n}</td>
-                <td className={`${STD} font-mono text-[11px] text-neutral-900`}>
-                  {url}
+            {ROADMAP.map((fase) => (
+              <tr key={fase.nome} className={fase.paralelo ? SHI : undefined}>
+                <td className={`${STD} whitespace-nowrap`}>
+                  {fase.janela}
+                  {fase.paralelo ? (
+                    <span className="mt-1 block text-[10px] opacity-70">
+                      em paralelo
+                    </span>
+                  ) : null}
                 </td>
-                <td className={`${STD} ${SNUM}`}>{vol}</td>
-                <td className={STD}>{formato}</td>
-                <td className={STD}>Fase 1</td>
-              </tr>
-            ))}
-            {FASE_2_PAGINAS.map(([n, url, , vol, formato]) => (
-              <tr key={url}>
-                <td className={STD}>{n}</td>
-                <td className={`${STD} font-mono text-[11px] text-neutral-900`}>
-                  {url}
+                <td className={STD}>
+                  <strong className="block text-neutral-900">
+                    {fase.nome}
+                  </strong>
+                  <span className="mt-0.5 block">{fase.objetivo}</span>
                 </td>
-                <td className={`${STD} ${SNUM}`}>{vol}</td>
-                <td className={STD}>{formato}</td>
-                <td className={STD}>Fase 2</td>
+                <td className={STD}>
+                  <ul className="grid gap-x-6 gap-y-1 sm:grid-cols-2">
+                    {fase.acoes.map((acao) => (
+                      <li
+                        key={acao}
+                        className="relative pl-4 before:absolute before:top-[0.5em] before:left-0 before:size-1.5 before:rounded-full before:bg-purple-600"
+                      >
+                        {acao}
+                      </li>
+                    ))}
+                  </ul>
+                </td>
               </tr>
             ))}
           </tbody>
         </SlideTable>
       </Slide>
 
-      {/* --------------------------- 13 · fechamento --------------------------- */}
+      {/* ------------------------- 07 · a arquitetura ------------------------- */}
       <Slide
-        n={13}
-        tone="purple"
-        eyebrow="Fechamento"
-        title="95,4% do volume do escopo coberto ao fim da Fase 2"
-        lede="39.150 das 41.040 buscas, em onze páginas satélite e a ferramenta — com os eventos no ar desde a Fase 1, porque otimizar um funil que ninguém instrumentou é adivinhar."
+        n={7}
+        eyebrow="Fases 1 e 2 · A arquitetura publicada"
+        title="Onze satélites e a ferramenta, definidas por intenção e keyword"
+        lede="Cada satélite leva CTA para a calculadora e link interno para as outras. A ferramenta é o destino de conversão do cluster inteiro."
       >
-        <div className="grid grid-cols-2 gap-3 sm:max-w-3xl lg:grid-cols-3">
-          <div className="rounded-2xl bg-green-500 px-5 py-4 text-neutral-900">
-            <p className="text-3xl font-bold tracking-tight tabular-nums sm:text-4xl">
-              95,4%
+        <SlideTable>
+          <thead>
+            <tr>
+              <th className={`${STH} w-8`}>#</th>
+              <th className={STH}>URL</th>
+              <th className={STH}>Keywords-alvo</th>
+              <th className={`${STH} ${SNUM}`}>Volume</th>
+              <th className={STH}>Formato</th>
+              <th className={STH}>Fase</th>
+            </tr>
+          </thead>
+          <tbody>
+            {FASE_1_PAGINAS.map(([n, url, kws, vol, formato, ferramenta]) => (
+              <tr key={url} className={ferramenta ? SHI : undefined}>
+                <td className={STD}>{n}</td>
+                <td className={`${STD} font-mono text-[11px] text-neutral-900`}>
+                  {url}
+                </td>
+                <td className={`${STD} font-mono text-[10px]`}>{kws}</td>
+                <td className={`${STD} ${SNUM}`}>{vol}</td>
+                <td className={STD}>{formato}</td>
+                <td className={STD}>1</td>
+              </tr>
+            ))}
+            {FASE_2_PAGINAS.map(([n, url, kws, vol, formato]) => (
+              <tr key={url}>
+                <td className={STD}>{n}</td>
+                <td className={`${STD} font-mono text-[11px] text-neutral-900`}>
+                  {url}
+                </td>
+                <td className={`${STD} font-mono text-[10px]`}>{kws}</td>
+                <td className={`${STD} ${SNUM}`}>{vol}</td>
+                <td className={STD}>{formato}</td>
+                <td className={STD}>2</td>
+              </tr>
+            ))}
+          </tbody>
+        </SlideTable>
+
+        <div className="mt-5 grid gap-3 sm:grid-cols-3">
+          <Big value="24.530" label="buscas cobertas ao fim da Fase 1" tone="outline" />
+          <Big value="95,4%" label="do volume do escopo ao fim da Fase 2 — 39.150 de 41.040" tone="green" />
+          <Big value="1.890" label="buscas residuais, em modelos específicos de negócio" tone="outline" />
+        </div>
+      </Slide>
+
+      {/* --------------------------- 08 · a página --------------------------- */}
+      <Slide
+        n={8}
+        eyebrow="A ferramenta"
+        title="Por que esta URL, este título e esta ordem"
+      >
+        <div className="grid gap-4 lg:grid-cols-3">
+          <div className="rounded-2xl bg-neutral-200 p-5 sm:p-6">
+            <Label>A URL</Label>
+            <p className="mt-3 font-mono text-xs font-bold text-neutral-900 sm:text-sm">
+              /ferramentas/calculadora-de-precos/
             </p>
-            <p className="mt-2 text-xs opacity-80 sm:text-sm">
-              de cobertura ao fim da Fase 2
+            <p className="mt-3 text-xs text-neutral-800 sm:text-sm">
+              O diretório <span className="font-mono">/ferramentas/</span> abre
+              espaço para as próximas sem reorganizar nada. Slug curto, sem stop
+              word, sem data. A barra final é a forma canônica e o formato sem
+              barra responde 308.
             </p>
           </div>
-          <div className="rounded-2xl bg-white/10 px-5 py-4">
-            <p className="text-3xl font-bold tracking-tight tabular-nums sm:text-4xl">
-              11 + 1
+
+          <div className="rounded-2xl bg-neutral-200 p-5 sm:p-6">
+            <Label>O título</Label>
+            <p className="mt-3 text-sm font-bold text-neutral-900 sm:text-base">
+              Calculadora de preço de venda
             </p>
-            <p className="mt-2 text-xs opacity-70 sm:text-sm">
-              páginas satélite e a ferramenta
+            <p className="mt-3 text-xs text-neutral-800 sm:text-sm">
+              O H1 é a keyword-alvo como ela é digitada — singular, sem
+              adjetivo. O <span className="font-mono">&lt;title&gt;</span>{" "}
+              estende para &ldquo;para produtos e serviços&rdquo;, cobrindo os
+              dois modos sem competir consigo mesmo.
             </p>
           </div>
-          <div className="rounded-2xl bg-white/10 px-5 py-4">
-            <p className="text-3xl font-bold tracking-tight tabular-nums sm:text-4xl">
-              DR 68
+
+          <div className="rounded-2xl bg-green-500 p-5 text-neutral-900 sm:p-6">
+            <p className="text-[11px] font-medium tracking-[0.14em] uppercase opacity-70">
+              A ordem
             </p>
-            <p className="mt-2 text-xs opacity-70 sm:text-sm">
-              contra 51,5 de mediana dos concorrentes
+            <p className="mt-3 text-sm font-bold sm:text-base">
+              Ferramenta no topo, conteúdo abaixo
+            </p>
+            <p className="mt-3 text-xs sm:text-sm">
+              Quem veio pelo cálculo resolve na primeira dobra. Quem veio pela
+              dúvida encontra fórmula, passos, exemplo numérico e FAQ logo em
+              seguida — e cada H2 é uma pergunta real de busca, não um rótulo.
             </p>
           </div>
         </div>
 
-        <div className="mt-8 flex flex-wrap gap-4 text-sm">
-          <Link
-            href={ROUTES.caseDoc}
-            className="rounded-full bg-white px-5 py-2.5 font-medium text-neutral-900 hover:bg-neutral-200"
-          >
-            O documento completo
-          </Link>
-          <Link
-            href={ROUTES.calculator}
-            className="rounded-full bg-neutral-900 px-5 py-2.5 font-medium text-white hover:bg-neutral-800"
-          >
-            A ferramenta publicada
-          </Link>
+        <div className="mt-4 rounded-2xl bg-neutral-900 p-5 text-white sm:p-6">
+          <p className="text-xs sm:text-sm">
+            <strong>A mesma URL trabalha duas vezes.</strong> Como{" "}
+            <strong>ferramenta</strong>, gera uso recorrente, tempo de
+            permanência e link natural. Como <strong>documento</strong> —
+            fórmula, exemplo numérico, passos e FAQ em texto —, responde à SERP e
+            é citável por answer engine. Um artigo faz só a segunda metade; um
+            app em JavaScript, só a primeira.
+          </p>
+        </div>
+      </Slide>
+
+      {/* ------------------------ 09 · SEO técnico e AEO ------------------------ */}
+      <Slide
+        n={9}
+        eyebrow="A ferramenta"
+        title="O teste que decide se a página está pronta"
+        lede="Desligue o JavaScript e recarregue. Se um crawler que não executa JS não entende o que a página faz, qual é a fórmula, como calcular passo a passo e quais são as respostas das FAQs, a página não está pronta."
+      >
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
+          <div>
+            <Label>A regra de decisão</Label>
+            <ol className="mt-3 flex flex-col gap-2 text-xs text-neutral-800 sm:text-sm">
+              <li>
+                <strong className="text-neutral-900">Static-first.</strong>{" "}
+                Todas as rotas são estáticas. Sem SSR, sem{" "}
+                <span className="font-mono">dynamic</span>, sem{" "}
+                <span className="font-mono">cookies()</span>.
+              </li>
+              <li>
+                <strong className="text-neutral-900">Server-first.</strong>{" "}
+                Server Component é o padrão. A página nunca é{" "}
+                <span className="font-mono">&quot;use client&quot;</span>.
+              </li>
+              <li>
+                <strong className="text-neutral-900">
+                  Client só onde precisa.
+                </strong>{" "}
+                Uma ilha: a calculadora e o formulário de lead.
+              </li>
+            </ol>
+
+            <div className="mt-4 rounded-2xl bg-green-500 p-5 text-neutral-900">
+              <p className="text-sm font-bold">A fórmula existe uma vez só</p>
+              <p className="mt-2 text-xs sm:text-sm">
+                O cálculo vive em funções puras que a ilha client importa{" "}
+                <em>e</em> o Server Component do exemplo prático também, em build
+                time. O exemplo publicado nunca diverge do que a ferramenta
+                calcula.
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <Label>No HTML do primeiro response</Label>
+            <div className="mt-3 flex flex-wrap gap-2 text-[11px] sm:text-xs">
+              {[
+                "H1 e hierarquia de headings",
+                "Resposta direta antes da dobra",
+                "Fórmula como texto legível",
+                "Exemplo numérico em tabela",
+                "Passos em lista ordenada",
+                "FAQ com pergunta e resposta",
+                "Links internos como links reais",
+                "Canonical, robots e Open Graph",
+              ].map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full bg-neutral-200 px-3 py-1.5 text-neutral-900"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+
+            <p className="mt-4 text-xs text-neutral-800 sm:text-sm">
+              <strong>Nada disso depende de hydration</strong>, de{" "}
+              <span className="font-mono">useEffect</span>, de fetch no client,
+              de clique, de scroll ou de accordion aberto. O FAQ usa{" "}
+              <span className="font-mono">&lt;details&gt;</span> nativo: fechado
+              na tela, presente no HTML.
+            </p>
+
+            <div className="mt-5">
+              <Label>Structured data server-rendered</Label>
+              <div className="mt-3 flex flex-wrap gap-2 text-[11px] sm:text-xs">
+                {["WebApplication", "BreadcrumbList", "HowTo", "FAQPage"].map(
+                  (s) => (
+                    <span
+                      key={s}
+                      className="rounded-full bg-purple-0 px-3 py-1.5 font-mono text-purple-600"
+                    >
+                      {s}
+                    </span>
+                  ),
+                )}
+              </div>
+              <p className="mt-3 text-xs text-neutral-800 sm:text-sm">
+                O conteúdo mora em <span className="font-mono">content/</span>{" "}
+                como dado tipado, e o schema sai da mesma fonte que o texto na
+                tela — então é impossível marcar o que não está visível.
+              </p>
+            </div>
+          </div>
+        </div>
+      </Slide>
+
+      {/* ------------------------- 10 · a lead bridge ------------------------- */}
+      <Slide
+        n={10}
+        tone="purple"
+        eyebrow="A ferramenta"
+        title="Entregar a resposta, cobrar pelo aprofundamento"
+        lede="Quem chegou buscando “quanto cobrar” recebe o preço sem pedágio. A contrapartida pelo contato é o detalhamento — quanto do preço é custo, imposto, taxa e lucro."
+      >
+        <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1.1fr)]">
+          <div className="rounded-2xl bg-green-500 p-5 text-neutral-900">
+            <span className="inline-flex rounded-full bg-neutral-900 px-3 py-1 text-[10px] font-medium text-white">
+              bloqueado
+            </span>
+            <p className="mt-3 text-[11px] font-medium">
+              Preço de venda sugerido
+            </p>
+            <p className="text-2xl font-bold tracking-tight tabular-nums">
+              R$ 74,38
+            </p>
+            <dl className="mt-3 flex flex-col gap-1.5 text-[11px]">
+              {["Custo", "Impostos", "Lucro"].map((l) => (
+                <div
+                  key={l}
+                  className="flex justify-between border-t border-neutral-900/15 pt-1.5"
+                >
+                  <dt>{l}</dt>
+                  <dd aria-hidden="true" className="blur-[2px]">
+                    R$ ••••
+                  </dd>
+                </div>
+              ))}
+            </dl>
+            <p className="mt-3 rounded-full bg-neutral-900 py-2 text-center text-[11px] font-medium text-white">
+              Ver o detalhamento
+            </p>
+          </div>
+
+          <div className="rounded-2xl bg-green-500 p-5 text-neutral-900">
+            <span className="inline-flex rounded-full bg-neutral-900 px-3 py-1 text-[10px] font-medium text-white">
+              liberado
+            </span>
+            <p className="mt-3 text-[11px] font-medium">
+              Preço de venda sugerido
+            </p>
+            <p className="text-2xl font-bold tracking-tight tabular-nums">
+              R$ 74,38
+            </p>
+            <dl className="mt-3 flex flex-col gap-1.5 text-[11px] tabular-nums">
+              {[
+                ["Custo", "R$ 45,00"],
+                ["Impostos", "R$ 4,46"],
+                ["Lucro", "R$ 14,88"],
+              ].map(([l, v]) => (
+                <div
+                  key={l}
+                  className="flex justify-between border-t border-neutral-900/15 pt-1.5"
+                >
+                  <dt>{l}</dt>
+                  <dd className="font-medium">{v}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="mt-3 text-center text-[11px] font-medium opacity-75">
+              markup 1,65x sobre o custo
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <p className="text-xs text-white/80 sm:text-sm">
+              <strong className="text-white">
+                O preço nunca fica atrás do formulário.
+              </strong>{" "}
+              Bloquear a resposta derruba a conversão e o sinal de qualidade da
+              página. Não pedir nada desperdiça o único momento em que a pessoa
+              tem motivo para se identificar.
+            </p>
+            <p className="text-xs text-white/80 sm:text-sm">
+              <strong className="text-white">O bloqueio é nomeado</strong> — os
+              rótulos ficam legíveis, só os valores somem — e{" "}
+              <strong className="text-white">não depende de CSS</strong>:
+              enquanto bloqueado, os valores reais não entram no DOM.
+            </p>
+
+            <div className="mt-auto flex flex-wrap gap-3 text-sm">
+              <Link
+                href={ROUTES.calculator}
+                className="rounded-full bg-green-500 px-5 py-2.5 font-medium text-neutral-900 hover:bg-green-300"
+              >
+                A ferramenta publicada
+              </Link>
+              <Link
+                href={ROUTES.caseDoc}
+                className="rounded-full bg-neutral-900 px-5 py-2.5 font-medium text-white hover:bg-neutral-800"
+              >
+                O documento completo
+              </Link>
+            </div>
+          </div>
         </div>
       </Slide>
     </main>
