@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { GeminiLogo, OpenAiLogo } from "@/components/doc/ai-logos";
@@ -10,7 +11,6 @@ import {
   STH,
   Slide,
   SlideTable,
-  TOTAL_SLIDES,
 } from "@/components/doc/slide";
 import {
   CHECKLIST_AEO,
@@ -64,6 +64,14 @@ function Label({ children }: { children: React.ReactNode }) {
   );
 }
 
+/** Os quatro blocos, e o slide em que cada um começa. */
+const BLOCOS = [
+  { label: "A análise", href: "#slide-2" },
+  { label: "O padrão de publicação", href: "#slide-5" },
+  { label: "O roadmap", href: "#slide-6" },
+  { label: "A ferramenta", href: "#slide-8" },
+];
+
 export default function ApresentacaoPage() {
   return (
     /*
@@ -75,65 +83,44 @@ export default function ApresentacaoPage() {
       layout: mudá-la afetaria todas as outras páginas.
     */
     <main className="fixed inset-0 z-50 h-[100svh] snap-y snap-mandatory overflow-y-auto overscroll-contain bg-white">
-      {/* ------------------------ 01 · capa e decisão ------------------------ */}
+      {/* ---------------------------- 01 · capa ---------------------------- */}
       <Slide
         n={1}
         tone="dark"
-        eyebrow="Case técnico · Technical SEO &amp; AI Growth Builder"
+        cover
+        above={
+          <Image
+            src="/brand/logo-horizontal-white.png"
+            alt="InfinitePay"
+            width={146}
+            height={30}
+            priority
+          />
+        }
+        eyebrow="Case técnico · Technical SEO & AI Growth Builder"
         title="Calculadora de preços de produtos e serviços"
         lede="A ferramenta escolhida, os dados que levaram até ela e o plano dos primeiros 90 dias."
       >
-        <div className="grid grid-cols-2 gap-3 sm:max-w-3xl sm:gap-4 lg:grid-cols-4">
-          <div className="rounded-2xl bg-green-500 px-5 py-4 text-neutral-900">
-            <p className="text-3xl font-bold tracking-tight tabular-nums sm:text-4xl">
-              41.040
-            </p>
-            <p className="mt-2 text-xs opacity-80 sm:text-sm">
-              buscas/mês no escopo
-            </p>
-          </div>
-          <div className="rounded-2xl bg-white/10 px-5 py-4">
-            <p className="text-3xl font-bold tracking-tight tabular-nums sm:text-4xl">
-              97,9%
-            </p>
-            <p className="mt-2 text-xs opacity-70 sm:text-sm">
-              sem ranking da InfinitePay
-            </p>
-          </div>
-          <div className="rounded-2xl bg-white/10 px-5 py-4">
-            <p className="text-3xl font-bold tracking-tight tabular-nums sm:text-4xl">
-              100%
-            </p>
-            <p className="mt-2 text-xs opacity-70 sm:text-sm">
-              de gap funcional — nenhuma calculadora na SERP
-            </p>
-          </div>
-          <div className="rounded-2xl bg-white/10 px-5 py-4">
-            <p className="text-3xl font-bold tracking-tight tabular-nums sm:text-4xl">
-              6,0
-            </p>
-            <p className="mt-2 text-xs opacity-70 sm:text-sm">
-              de KD mediano — barreira baixa
-            </p>
-          </div>
-        </div>
-
-        <p className="mt-6 max-w-3xl text-sm text-white/80">
-          Uma página que é <strong className="text-white">ferramenta</strong> e{" "}
-          <strong className="text-white">documento indexável</strong> ao mesmo
-          tempo, em{" "}
-          <span className="font-mono text-green-500">
-            /ferramentas/calculadora-de-precos/
-          </span>
-          .
-        </p>
-
-        <p className="mt-6 text-xs text-white/60">
-          {TOTAL_SLIDES} telas · role, ou use PageDown e as setas do rodapé ·{" "}
-          <Link href={ROUTES.caseDoc} className="text-green-500 hover:underline">
-            ler o documento completo
-          </Link>
-        </p>
+        {/*
+          Os quatro blocos da apresentação. São links de âncora para o slide em
+          que cada bloco começa — visualmente idênticos a rótulos, mas levam a
+          algum lugar, que é o que a capa precisa oferecer no lugar das setas.
+        */}
+        <nav aria-label="Blocos da apresentação" className="flex flex-wrap gap-2">
+          {BLOCOS.map((b, i) => (
+            <a
+              key={b.label}
+              href={b.href}
+              className={`rounded-full px-4 py-1.5 text-xs font-medium transition-colors ${
+                i === 0
+                  ? "bg-green-500 text-neutral-900 hover:bg-green-300"
+                  : "bg-white/12 text-white hover:bg-white/20"
+              }`}
+            >
+              {b.label}
+            </a>
+          ))}
+        </nav>
       </Slide>
 
       {/* -------------------- 02 · o dataset e o pipeline -------------------- */}

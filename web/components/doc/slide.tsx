@@ -28,6 +28,8 @@ export function Slide({
   lede,
   children,
   tone = "light",
+  cover = false,
+  above,
 }: {
   n: number;
   eyebrow?: string;
@@ -35,6 +37,13 @@ export function Slide({
   lede?: string;
   children?: ReactNode;
   tone?: "light" | "dark" | "purple";
+  /**
+   * Capa: título grande, conteúdo alinhado ao rodapé e a assinatura no lugar
+   * do contador. Só o slide 1 usa.
+   */
+  cover?: boolean;
+  /** Bloco acima do eyebrow — o logo, na capa. */
+  above?: ReactNode;
 }) {
   const surface = {
     light: "bg-white text-neutral-900",
@@ -53,34 +62,62 @@ export function Slide({
       aria-label={`Slide ${n} de ${TOTAL_SLIDES}: ${title}`}
       className={`flex min-h-[100svh] snap-start flex-col px-6 pt-10 pb-6 sm:px-12 sm:pt-14 lg:px-20 ${surface}`}
     >
-      {eyebrow ? (
-        <p
-          className={`text-[11px] font-medium tracking-[0.14em] uppercase sm:text-xs ${eyebrowColor}`}
-        >
-          {eyebrow}
-        </p>
-      ) : null}
-
-      <h2 className="mt-2 max-w-5xl text-2xl font-bold tracking-tight text-balance sm:text-3xl lg:text-4xl">
-        {title}
-      </h2>
-
-      {lede ? (
-        <p className={`mt-3 max-w-3xl text-sm sm:text-base ${ledeColor}`}>
-          {lede}
-        </p>
-      ) : null}
+      {above}
 
       {/*
-        `min-h-0` é o que permite a tabela rolar dentro do slide em vez de
-        empurrar o rodapé para fora da tela: sem ele um filho flex assume a
-        altura do conteúdo e o `overflow` do TableWrap nunca entra em ação.
+        Na capa o bloco de texto desce para o rodapé — é o respiro que faz o
+        título ler como abertura, e não como mais um slide de conteúdo.
       */}
-      <div className="mt-6 flex min-h-0 flex-1 flex-col justify-center">
-        {children}
+      <div
+        className={
+          cover
+            ? "flex min-h-0 flex-1 flex-col justify-end"
+            : "contents"
+        }
+      >
+        {eyebrow ? (
+          <p
+            className={`text-[11px] font-medium tracking-[0.14em] uppercase sm:text-xs ${eyebrowColor}`}
+          >
+            {eyebrow}
+          </p>
+        ) : null}
+
+        <h2
+          className={
+            cover
+              ? "mt-3 max-w-4xl text-4xl font-bold tracking-tight text-balance sm:text-5xl lg:text-6xl"
+              : "mt-2 max-w-5xl text-2xl font-bold tracking-tight text-balance sm:text-3xl lg:text-4xl"
+          }
+        >
+          {title}
+        </h2>
+
+        {lede ? (
+          <p
+            className={`max-w-3xl ${cover ? "mt-5 text-base sm:text-lg" : "mt-3 text-sm sm:text-base"} ${ledeColor}`}
+          >
+            {lede}
+          </p>
+        ) : null}
+
+        {/*
+          `min-h-0` é o que permite a tabela rolar dentro do slide em vez de
+          empurrar o rodapé para fora da tela: sem ele um filho flex assume a
+          altura do conteúdo e o `overflow` do TableWrap nunca entra em ação.
+        */}
+        <div
+          className={
+            cover
+              ? "mt-8"
+              : "mt-6 flex min-h-0 flex-1 flex-col justify-center"
+          }
+        >
+          {children}
+        </div>
       </div>
 
-      <SlideFoot n={n} rule={footRule} text={footText} />
+      <SlideFoot n={n} rule={footRule} text={footText} cover={cover} />
     </section>
   );
 }
@@ -95,21 +132,35 @@ function SlideFoot({
   n,
   rule,
   text,
+  cover,
 }: {
   n: number;
   rule: string;
   text: string;
+  cover: boolean;
 }) {
   const prev = n > 1 ? `#slide-${n - 1}` : null;
   const next = n < TOTAL_SLIDES ? `#slide-${n + 1}` : null;
+  const contador = `${String(n).padStart(2, "0")} / ${TOTAL_SLIDES}`;
+
+  // Na capa a assinatura ocupa a esquerda e o contador vai para a direita.
+  // As setas saem: quem chega aqui rola, e os blocos acima já são os atalhos.
+  if (cover) {
+    return (
+      <div
+        className={`mt-6 flex shrink-0 items-center justify-between gap-4 border-t pt-3 text-[11px] font-medium tracking-[0.04em] sm:text-xs ${rule} ${text}`}
+      >
+        <span>Caio Guerra</span>
+        <span className="tabular-nums">{contador}</span>
+      </div>
+    );
+  }
 
   return (
     <div
       className={`mt-6 flex shrink-0 items-center justify-between gap-4 border-t pt-3 text-[11px] font-medium tracking-[0.04em] sm:text-xs ${rule} ${text}`}
     >
-      <span className="tabular-nums">
-        {String(n).padStart(2, "0")} / {TOTAL_SLIDES}
-      </span>
+      <span className="tabular-nums">{contador}</span>
 
       <span className="flex items-center gap-4">
         {prev ? (
