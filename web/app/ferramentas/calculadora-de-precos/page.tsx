@@ -183,6 +183,16 @@ export default function CalculadoraDePrecosPage() {
             </CtaLink>
           </p>
         </section>
+
+        {/*
+          A ressalva sobre os calculos mora aqui, e nao no rodape do layout:
+          ela so e verdadeira nesta pagina. No rodape global aparecia tambem
+          no documento do case e no 404, onde nao ha calculo nenhum.
+        */}
+        <p className="mt-10 text-sm text-neutral-800">
+          Os cálculos são estimativas baseadas nos valores que você informa e
+          não substituem orientação contábil.
+        </p>
       </main>
     </>
   );

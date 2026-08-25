@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { Breadcrumb, type Crumb } from "@/components/content/breadcrumb";
+import { AiSummary } from "@/components/doc/ai-summary";
 import { PartAnalise } from "@/components/doc/part-analise";
 import { PartPadrao } from "@/components/doc/part-padrao";
 import { PartRoadmap } from "@/components/doc/part-roadmap";
@@ -112,6 +113,7 @@ export default function CaseDocPage() {
               Neste documento
             </p>
             <TocList />
+            <AiSummary className="mt-6" />
           </nav>
         </aside>
 
@@ -145,6 +147,11 @@ export default function CaseDocPage() {
             </Callout>
           </header>
 
+          {/*
+            No celular o indice fica recolhido — sao 18 itens antes do texto
+            comecar. O bloco de resumo por IA fica aberto: e uma escolha de uma
+            linha, util justamente para quem nao vai rolar o documento inteiro.
+          */}
           <details className="mt-8 rounded-xl border border-neutral-400 px-4 lg:hidden">
             <summary className="cursor-pointer py-3 text-sm font-medium">
               Neste documento
@@ -153,6 +160,8 @@ export default function CaseDocPage() {
               <TocList dense />
             </nav>
           </details>
+
+          <AiSummary className="mt-4 lg:hidden" />
 
           {/* --------------------- sumário executivo --------------------- */}
 

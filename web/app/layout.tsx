@@ -79,17 +79,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
         <footer className="mt-16 border-t border-neutral-200">
           <div className="mx-auto max-w-5xl px-4 py-8 text-sm text-neutral-800">
-            <p>
-              Os cálculos são estimativas baseadas nos valores que você informa
-              e não substituem orientação contábil.
-            </p>
             {/*
-              Aqui havia uma linha de copyright ("2026 InfinitePay"), que lia
-              como se a página fosse da empresa. Atribuição de marca é o
-              oposto de reivindicação de autoria: diz de quem é a marca e
-              deixa claro que esta página não é dela.
+              Só o que vale para TODAS as páginas. A ressalva sobre os cálculos
+              vivia aqui e foi para a página da calculadora, que é a única onde
+              existe cálculo.
+
+              Aqui havia também uma linha de copyright ("2026 InfinitePay"), que
+              lia como se a página fosse da empresa. Atribuição de marca é o
+              oposto de reivindicação de autoria: diz de quem é a marca e deixa
+              claro que esta página não é dela.
             */}
-            <p className="mt-3">
+            <p>
               Página protótipo criada para um case técnico, sem relação oficial
               com a {SITE_NAME}. Marca, logo e identidade visual são propriedade
               da {SITE_NAME} e aparecem aqui apenas para fins de demonstração.
