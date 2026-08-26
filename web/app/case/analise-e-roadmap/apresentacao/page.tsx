@@ -516,7 +516,13 @@ export default function ApresentacaoPage() {
         eyebrow="A página"
         title="Por que esta URL, este título e esta ordem"
       >
-        <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-12">
+        {/*
+          A coluna da miniatura tem largura fixa, e não metade da tela: os
+          tamanhos de texto dentro dela são fixos, então numa coluna que
+          cresce com o monitor o desenho estica e deixa de parecer uma
+          página. O texto fica com a folga que sobrar.
+        */}
+        <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,480px)_minmax(0,1fr)] lg:gap-12">
           <PageMockup />
 
           <div className="flex flex-col gap-5">
