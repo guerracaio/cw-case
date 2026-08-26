@@ -62,7 +62,16 @@ export function Slide({
       aria-label={`Slide ${n} de ${TOTAL_SLIDES}: ${title}`}
       className={`flex min-h-[100svh] snap-start flex-col px-6 pt-10 pb-6 sm:px-12 sm:pt-14 lg:px-20 ${surface}`}
     >
-      {above}
+      {/*
+        Medida fixa, centrada. Sem ela o conteúdo acompanha a largura do
+        monitor: numa tela larga a tabela do roadmap abre para 1800px e cada
+        linha vira uma faixa que o olho não consegue seguir de ponta a ponta.
+
+        72rem é a mesma medida dos slides do deck (1280 menos as margens), então
+        os dois formatos leem com a mesma linha.
+      */}
+      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col">
+        {above}
 
       {/*
         Na capa o bloco de texto desce para o rodapé — é o respiro que faz o
@@ -117,7 +126,8 @@ export function Slide({
         </div>
       </div>
 
-      <SlideFoot n={n} rule={footRule} text={footText} cover={cover} />
+        <SlideFoot n={n} rule={footRule} text={footText} cover={cover} />
+      </div>
     </section>
   );
 }
