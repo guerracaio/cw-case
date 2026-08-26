@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { GeminiLogo, OpenAiLogo } from "@/components/doc/ai-logos";
+import { CheckIcon } from "@/components/doc/prose";
 import {
   Big,
   SHI,
@@ -61,6 +62,24 @@ function Label({ children }: { children: React.ReactNode }) {
     <p className="text-[11px] font-medium tracking-[0.14em] text-neutral-800 uppercase">
       {children}
     </p>
+  );
+}
+
+/**
+ * Lista de verificação com a marca de conferido no lugar do ponto — o mesmo
+ * tratamento do documento. O ícone diz algo verdadeiro sobre a lista: são
+ * checklists item a item, não enumerações quaisquer.
+ */
+function Checks({ items }: { items: readonly string[] }) {
+  return (
+    <ul className="flex flex-col gap-1.5 text-xs text-neutral-800 sm:text-sm">
+      {items.map((item) => (
+        <li key={item} className="flex items-start gap-2">
+          <CheckIcon className="mt-[0.3em] size-3 shrink-0 text-purple-600" />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -300,47 +319,79 @@ export default function ApresentacaoPage() {
         n={5}
         eyebrow="Parte 2 · O padrão de publicação"
         title="A definição de pronto — para as onze satélites e para a ferramenta"
-        lede="Não é tarefa de uma fase: vale em todas. Sem isso, cada fase reinventa o próprio critério de qualidade."
+        lede="Estas listas não são tarefa de um mês. Elas valem em todas as fases, e é por isso que ficam entre a análise e o roadmap: sem elas, cada fase reinventa o próprio critério de qualidade."
       >
         <div className="grid gap-4 lg:grid-cols-3">
-          <div className="flex flex-col rounded-2xl bg-neutral-200 p-5 sm:p-6">
+          {/*
+            O checklist de SEO tem 13 itens curtos. Em coluna única ele fica
+            quase o dobro da altura dos outros dois e desalinha o slide; em
+            duas subcolunas os três cards terminam juntos.
+          */}
+          <div className="rounded-2xl bg-neutral-200 p-5 sm:p-6">
             <Label>2.1 · Checklist SEO</Label>
-            <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-neutral-800 sm:text-sm lg:grid-cols-1 lg:gap-y-1">
-              {CHECKLIST_SEO.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+            <div className="mt-4 grid gap-x-6 sm:grid-cols-2">
+              <Checks items={CHECKLIST_SEO.slice(0, 7)} />
+              <Checks items={CHECKLIST_SEO.slice(7)} />
+            </div>
           </div>
 
-          <div className="flex flex-col rounded-2xl bg-neutral-200 p-5 sm:p-6">
+          <div className="rounded-2xl bg-neutral-200 p-5 sm:p-6">
             <Label>2.2 · Checklist AEO</Label>
-            <ul className="mt-4 flex flex-col gap-1.5 text-xs text-neutral-800 sm:text-sm">
-              {CHECKLIST_AEO.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+            <div className="mt-4">
+              <Checks items={CHECKLIST_AEO} />
+            </div>
           </div>
 
-          <div className="flex flex-col rounded-2xl bg-green-500 p-5 text-neutral-900 sm:p-6">
-            <p className="text-[11px] font-medium tracking-[0.14em] uppercase opacity-70">
-              2.3 · O que medir desde o início
-            </p>
+          {/*
+            O card inteiro era verde. Passou a cinza com uma única linha verde:
+            o destaque é o evento que fecha o funil, e dois verdes na mesma
+            dobra anulam um ao outro.
+
+            `site_cta_click` sai da lista e vira nota — ele existe justamente
+            por NÃO pertencer ao funil de lead.
+          */}
+          <div className="rounded-2xl bg-neutral-200 p-5 sm:p-6">
+            <Label>2.3 · O que medir desde o início</Label>
             <ul className="mt-4 flex flex-col gap-1.5">
-              {EVENTOS.map(([evento, quando]) => (
-                <li
-                  key={evento}
-                  className="flex items-center justify-between gap-3 rounded-lg bg-white/70 px-3 py-1.5 text-xs"
-                >
-                  <span>{quando}</span>
-                  <span className="font-mono text-[10px] whitespace-nowrap">
-                    {evento}
-                  </span>
-                </li>
-              ))}
+              {EVENTOS.filter(([e]) => e !== "site_cta_click").map(
+                ([evento, quando]) => {
+                  const fim = evento === "lead_generated";
+                  return (
+                    <li
+                      key={evento}
+                      className={`flex items-center justify-between gap-3 rounded-full px-3.5 py-2 text-xs ${
+                        fim
+                          ? "bg-green-500 font-medium text-neutral-900"
+                          : "bg-white text-neutral-900"
+                      }`}
+                    >
+                      <span>{quando}</span>
+                      <span
+                        className={`rounded-full px-2 py-0.5 font-mono text-[10px] whitespace-nowrap ${
+                          fim
+                            ? "bg-neutral-900 text-white"
+                            : "bg-purple-0 text-purple-600"
+                        }`}
+                      >
+                        {evento}
+                      </span>
+                    </li>
+                  );
+                },
+              )}
             </ul>
-            <p className="mt-4 text-xs">
-              <strong>Os eventos entram na Fase 1, não na Fase 4.</strong>{" "}
+
+            <p className="mt-4 text-xs text-neutral-800">
+              <strong className="text-neutral-900">
+                Os eventos entram na Fase 1, não na Fase 4.
+              </strong>{" "}
               Otimizar um funil que ninguém instrumentou é adivinhar.
+            </p>
+
+            <p className="mt-2 text-xs text-neutral-800">
+              Mais <span className="font-mono">site_cta_click</span> para
+              cliques que levam para fora do site — um clique de saída não
+              pertence ao funil de lead.
             </p>
           </div>
         </div>
