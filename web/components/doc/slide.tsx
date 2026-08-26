@@ -29,6 +29,7 @@ export function Slide({
   children,
   tone = "light",
   cover = false,
+  signature,
   above,
 }: {
   n: number;
@@ -42,6 +43,11 @@ export function Slide({
    * do contador. Só o slide 1 usa.
    */
   cover?: boolean;
+  /**
+   * Substitui o contador à esquerda do rodapé e dispensa as setas: a capa
+   * assina, o fechamento agradece. Nos slides do meio o rodapé é navegação.
+   */
+  signature?: string;
   /** Bloco acima do eyebrow — o logo, na capa. */
   above?: ReactNode;
 }) {
@@ -126,7 +132,12 @@ export function Slide({
         </div>
       </div>
 
-        <SlideFoot n={n} rule={footRule} text={footText} cover={cover} />
+        <SlideFoot
+          n={n}
+          rule={footRule}
+          text={footText}
+          signature={signature}
+        />
       </div>
     </section>
   );
@@ -142,25 +153,26 @@ function SlideFoot({
   n,
   rule,
   text,
-  cover,
+  signature,
 }: {
   n: number;
   rule: string;
   text: string;
-  cover: boolean;
+  signature?: string;
 }) {
   const prev = n > 1 ? `#slide-${n - 1}` : null;
   const next = n < TOTAL_SLIDES ? `#slide-${n + 1}` : null;
   const contador = `${String(n).padStart(2, "0")} / ${TOTAL_SLIDES}`;
 
-  // Na capa a assinatura ocupa a esquerda e o contador vai para a direita.
-  // As setas saem: quem chega aqui rola, e os blocos acima já são os atalhos.
-  if (cover) {
+  // Com assinatura o rodapé vira legenda: nome à esquerda, contador à direita.
+  // As setas saem porque nas duas pontas elas não levam a lugar nenhum novo —
+  // na capa os blocos já são os atalhos, e no fim não há próximo.
+  if (signature) {
     return (
       <div
         className={`mt-6 flex shrink-0 items-center justify-between gap-4 border-t pt-3 text-[11px] font-medium tracking-[0.04em] sm:text-xs ${rule} ${text}`}
       >
-        <span>Caio Guerra</span>
+        <span>{signature}</span>
         <span className="tabular-nums">{contador}</span>
       </div>
     );

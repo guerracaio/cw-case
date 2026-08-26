@@ -117,6 +117,7 @@ export default function ApresentacaoPage() {
         n={1}
         tone="dark"
         cover
+        signature="Caio Guerra"
         above={
           <Image
             src="/brand/logo-horizontal-white.png"
@@ -671,106 +672,155 @@ export default function ApresentacaoPage() {
         </div>
       </Slide>
 
-      {/* ------------------------- 10 · a lead bridge ------------------------- */}
+      {/* -------------------------- 10 · fechamento -------------------------- */}
       <Slide
         n={10}
-        tone="purple"
-        eyebrow="A ferramenta"
-        title="Entregar a resposta, cobrar pelo aprofundamento"
-        lede="Quem chegou buscando “quanto cobrar” recebe o preço sem pedágio. A contrapartida pelo contato é o detalhamento — quanto do preço é custo, imposto, taxa e lucro."
+        tone="dark"
+        signature="Obrigado"
+        eyebrow="Fechamento"
+        title="O preço é livre; o detalhamento é a contrapartida"
       >
-        <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1.1fr)]">
-          <div className="rounded-2xl bg-green-500 p-5 text-neutral-900">
-            <span className="inline-flex rounded-full bg-neutral-900 px-3 py-1 text-[10px] font-medium text-white">
-              bloqueado
-            </span>
-            <p className="mt-3 text-[11px] font-medium">
-              Preço de venda sugerido
-            </p>
-            <p className="text-2xl font-bold tracking-tight tabular-nums">
-              R$ 74,38
-            </p>
-            <dl className="mt-3 flex flex-col gap-1.5 text-[11px]">
-              {["Custo", "Impostos", "Lucro"].map((l) => (
-                <div
-                  key={l}
-                  className="flex justify-between border-t border-neutral-900/15 pt-1.5"
-                >
-                  <dt>{l}</dt>
-                  <dd aria-hidden="true" className="blur-[2px]">
-                    R$ ••••
-                  </dd>
-                </div>
-              ))}
-            </dl>
-            <p className="mt-3 rounded-full bg-neutral-900 py-2 text-center text-[11px] font-medium text-white">
-              Ver o detalhamento
-            </p>
-          </div>
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,440px)_minmax(0,1fr)] lg:gap-14">
+          {/* a lead bridge, nos dois estados */}
+          <div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="rounded-2xl bg-green-500 p-4 text-neutral-900">
+                <span className="inline-flex rounded-full bg-neutral-900 px-2.5 py-1 text-[10px] font-medium text-white">
+                  bloqueado
+                </span>
+                <p className="mt-3 text-[11px] font-medium">
+                  Preço de venda sugerido
+                </p>
+                <p className="text-2xl font-bold tracking-tight tabular-nums">
+                  R$ 74,38
+                </p>
+                <dl className="mt-3 flex flex-col gap-1.5 text-[11px]">
+                  {["Custo", "Impostos", "Lucro"].map((l) => (
+                    <div
+                      key={l}
+                      className="flex justify-between border-t border-neutral-900/15 pt-1.5"
+                    >
+                      <dt>{l}</dt>
+                      <dd aria-hidden="true" className="blur-[2px]">
+                        R$ ••••
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+                <p className="mt-4 rounded-full bg-neutral-900 py-2 text-center text-[11px] font-medium text-white">
+                  Ver o detalhamento
+                </p>
+              </div>
 
-          <div className="rounded-2xl bg-green-500 p-5 text-neutral-900">
-            <span className="inline-flex rounded-full bg-neutral-900 px-3 py-1 text-[10px] font-medium text-white">
-              liberado
-            </span>
-            <p className="mt-3 text-[11px] font-medium">
-              Preço de venda sugerido
-            </p>
-            <p className="text-2xl font-bold tracking-tight tabular-nums">
-              R$ 74,38
-            </p>
-            <dl className="mt-3 flex flex-col gap-1.5 text-[11px] tabular-nums">
-              {[
-                ["Custo", "R$ 45,00"],
-                ["Impostos", "R$ 4,46"],
-                ["Lucro", "R$ 14,88"],
-              ].map(([l, v]) => (
-                <div
-                  key={l}
-                  className="flex justify-between border-t border-neutral-900/15 pt-1.5"
-                >
-                  <dt>{l}</dt>
-                  <dd className="font-medium">{v}</dd>
-                </div>
-              ))}
-            </dl>
-            <p className="mt-3 text-center text-[11px] font-medium opacity-75">
-              markup 1,65x sobre o custo
-            </p>
-          </div>
+              <div className="rounded-2xl bg-green-500 p-4 text-neutral-900">
+                <span className="inline-flex rounded-full bg-neutral-900 px-2.5 py-1 text-[10px] font-medium text-white">
+                  liberado
+                </span>
+                <p className="mt-3 text-[11px] font-medium">
+                  Preço de venda sugerido
+                </p>
+                <p className="text-2xl font-bold tracking-tight tabular-nums">
+                  R$ 74,38
+                </p>
+                <dl className="mt-3 flex flex-col gap-1.5 text-[11px] tabular-nums">
+                  {[
+                    ["Custo", "R$ 45,00"],
+                    ["Impostos", "R$ 4,46"],
+                    ["Lucro", "R$ 14,88"],
+                  ].map(([l, v]) => (
+                    <div
+                      key={l}
+                      className="flex justify-between border-t border-neutral-900/15 pt-1.5"
+                    >
+                      <dt>{l}</dt>
+                      <dd className="font-medium">{v}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <p className="mt-4 text-center text-[11px] font-medium opacity-75">
+                  markup 1,65x sobre o custo
+                </p>
+              </div>
+            </div>
 
-          <div className="flex flex-col gap-4">
-            <p className="text-xs text-white/80 sm:text-sm">
-              <strong className="text-white">
-                O preço nunca fica atrás do formulário.
-              </strong>{" "}
-              Bloquear a resposta derruba a conversão e o sinal de qualidade da
-              página. Não pedir nada desperdiça o único momento em que a pessoa
-              tem motivo para se identificar.
-            </p>
-            <p className="text-xs text-white/80 sm:text-sm">
-              <strong className="text-white">O bloqueio é nomeado</strong> — os
-              rótulos ficam legíveis, só os valores somem — e{" "}
-              <strong className="text-white">não depende de CSS</strong>:
+            <p className="mt-4 text-xs text-white/70 sm:text-sm">
+              Quem chegou buscando &ldquo;quanto cobrar&rdquo; recebe o preço sem
+              pedágio. Os rótulos ficam legíveis e só os valores somem — ninguém
+              troca dados por uma área borrada sem saber o que há nela. E
               enquanto bloqueado, os valores reais não entram no DOM.
             </p>
+          </div>
 
-            <div className="mt-auto flex flex-wrap gap-3 text-sm">
-              <Link
-                href={ROUTES.calculator}
-                className="rounded-full bg-green-500 px-5 py-2.5 font-medium text-neutral-900 hover:bg-green-300"
-              >
-                A ferramenta publicada
-              </Link>
-              <Link
-                href={ROUTES.caseDoc}
-                className="rounded-full bg-neutral-900 px-5 py-2.5 font-medium text-white hover:bg-neutral-800"
-              >
-                O documento completo
-              </Link>
+          {/* o que fica, e onde está o detalhe */}
+          <div>
+            <p className="text-[11px] font-medium tracking-[0.14em] text-green-500 uppercase sm:text-xs">
+              O que fica
+            </p>
+
+            <div className="mt-4 grid gap-6 sm:grid-cols-3">
+              {[
+                [
+                  "Um critério reaplicável",
+                  "O score que escolheu a calculadora roda de novo no próximo cluster. A escolha é auditável, não é intuição.",
+                ],
+                [
+                  "Uma página no ar",
+                  "Estática, indexável com JavaScript desligado, com a captura no ponto de valor.",
+                ],
+                [
+                  "90 dias com URL e evento",
+                  "Onze satélites definidas por intenção e a instrumentação pronta antes de haver o que otimizar.",
+                ],
+              ].map(([titulo, texto]) => (
+                <div key={titulo}>
+                  <h3 className="text-sm font-bold sm:text-base">{titulo}</h3>
+                  <p className="mt-2 text-xs text-white/70">{texto}</p>
+                </div>
+              ))}
             </div>
+
+            <hr className="my-7 border-white/20" />
+
+            <p className="text-[11px] font-medium tracking-[0.14em] text-green-500 uppercase sm:text-xs">
+              O detalhe está no material escrito
+            </p>
+
+            {/*
+              Endereços como links reais. Numa página web um endereço que não
+              clica é um defeito, e o tratamento visual é o mesmo do print.
+            */}
+            <ul className="mt-4 flex flex-col gap-2 font-mono text-xs text-white/80 sm:text-sm">
+              <li>
+                <Link
+                  href={ROUTES.calculator}
+                  className="hover:text-green-500 hover:underline"
+                >
+                  cw-case.vercel.app/ferramentas/calculadora-de-precos/
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={ROUTES.caseDoc}
+                  className="hover:text-green-500 hover:underline"
+                >
+                  cw-case.vercel.app/case/analise-e-roadmap/
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/guerracaio/cw-case"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-green-500 hover:underline"
+                >
+                  github.com/guerracaio/cw-case
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </Slide>
+
     </main>
   );
 }
