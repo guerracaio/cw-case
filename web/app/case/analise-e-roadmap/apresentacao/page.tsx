@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { GeminiLogo, OpenAiLogo } from "@/components/doc/ai-logos";
+import { PageMockup } from "@/components/doc/page-mockup";
 import { CheckIcon } from "@/components/doc/prose";
 import {
   Big,
@@ -62,6 +63,15 @@ function Label({ children }: { children: React.ReactNode }) {
     <p className="text-[11px] font-medium tracking-[0.14em] text-neutral-800 uppercase">
       {children}
     </p>
+  );
+}
+
+/** Rótulo em pílula roxa — abre cada bloco do slide da página. */
+function Pill({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex rounded-full bg-purple-0 px-3 py-1 text-[11px] font-medium text-purple-600">
+      {children}
+    </span>
   );
 }
 
@@ -503,60 +513,60 @@ export default function ApresentacaoPage() {
       {/* --------------------------- 08 · a página --------------------------- */}
       <Slide
         n={8}
-        eyebrow="A ferramenta"
+        eyebrow="A página"
         title="Por que esta URL, este título e esta ordem"
       >
-        <div className="grid gap-4 lg:grid-cols-3">
-          <div className="rounded-2xl bg-neutral-200 p-5 sm:p-6">
-            <Label>A URL</Label>
-            <p className="mt-3 font-mono text-xs font-bold text-neutral-900 sm:text-sm">
-              /ferramentas/calculadora-de-precos/
-            </p>
-            <p className="mt-3 text-xs text-neutral-800 sm:text-sm">
-              O diretório <span className="font-mono">/ferramentas/</span> abre
-              espaço para as próximas sem reorganizar nada. Slug curto, sem stop
-              word, sem data. A barra final é a forma canônica e o formato sem
-              barra responde 308.
+        <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-12">
+          <PageMockup />
+
+          <div className="flex flex-col gap-5">
+            <div>
+              <Pill>A URL</Pill>
+              <p className="mt-2.5 font-mono text-sm font-bold text-neutral-900">
+                /ferramentas/calculadora-de-precos/
+              </p>
+              <p className="mt-1.5 text-xs text-neutral-800 sm:text-sm">
+                O diretório <span className="font-mono">/ferramentas/</span> abre
+                o espaço para as próximas sem reorganizar nada. Slug curto, sem
+                stop word, sem data. A barra final é a forma canônica e o
+                formato sem barra responde 308.
+              </p>
+            </div>
+
+            <div>
+              <Pill>O título</Pill>
+              <p className="mt-2.5 text-base font-bold text-neutral-900">
+                Calculadora de preço de venda
+              </p>
+              <p className="mt-1.5 text-xs text-neutral-800 sm:text-sm">
+                O H1 é a keyword-alvo como ela é digitada — singular, sem
+                adjetivo. O <span className="font-mono">&lt;title&gt;</span>{" "}
+                estende para &ldquo;para produtos e serviços&rdquo;, cobrindo os
+                dois modos sem competir consigo mesmo.
+              </p>
+            </div>
+
+            <div>
+              <Pill>A ordem</Pill>
+              <p className="mt-2.5 text-base font-bold text-neutral-900">
+                Ferramenta no topo, conteúdo abaixo
+              </p>
+              <p className="mt-1.5 text-xs text-neutral-800 sm:text-sm">
+                Quem veio pelo cálculo resolve na primeira dobra. Quem veio pela
+                dúvida encontra fórmula, passos, exemplo numérico e FAQ logo em
+                seguida — e cada H2 é uma pergunta real de busca, não um rótulo.
+              </p>
+            </div>
+
+            <p className="rounded-2xl border border-neutral-400 px-5 py-4 text-xs text-neutral-800 sm:text-sm">
+              <strong className="text-neutral-900">
+                Mockup de alta fidelidade.
+              </strong>{" "}
+              O formulário valida e libera o detalhamento, mas não persiste
+              nada: sem Route Handler, sem CRM e sem container de analytics
+              carregado.
             </p>
           </div>
-
-          <div className="rounded-2xl bg-neutral-200 p-5 sm:p-6">
-            <Label>O título</Label>
-            <p className="mt-3 text-sm font-bold text-neutral-900 sm:text-base">
-              Calculadora de preço de venda
-            </p>
-            <p className="mt-3 text-xs text-neutral-800 sm:text-sm">
-              O H1 é a keyword-alvo como ela é digitada — singular, sem
-              adjetivo. O <span className="font-mono">&lt;title&gt;</span>{" "}
-              estende para &ldquo;para produtos e serviços&rdquo;, cobrindo os
-              dois modos sem competir consigo mesmo.
-            </p>
-          </div>
-
-          <div className="rounded-2xl bg-green-500 p-5 text-neutral-900 sm:p-6">
-            <p className="text-[11px] font-medium tracking-[0.14em] uppercase opacity-70">
-              A ordem
-            </p>
-            <p className="mt-3 text-sm font-bold sm:text-base">
-              Ferramenta no topo, conteúdo abaixo
-            </p>
-            <p className="mt-3 text-xs sm:text-sm">
-              Quem veio pelo cálculo resolve na primeira dobra. Quem veio pela
-              dúvida encontra fórmula, passos, exemplo numérico e FAQ logo em
-              seguida — e cada H2 é uma pergunta real de busca, não um rótulo.
-            </p>
-          </div>
-        </div>
-
-        <div className="mt-4 rounded-2xl bg-neutral-900 p-5 text-white sm:p-6">
-          <p className="text-xs sm:text-sm">
-            <strong>A mesma URL trabalha duas vezes.</strong> Como{" "}
-            <strong>ferramenta</strong>, gera uso recorrente, tempo de
-            permanência e link natural. Como <strong>documento</strong> —
-            fórmula, exemplo numérico, passos e FAQ em texto —, responde à SERP e
-            é citável por answer engine. Um artigo faz só a segunda metade; um
-            app em JavaScript, só a primeira.
-          </p>
         </div>
       </Slide>
 
